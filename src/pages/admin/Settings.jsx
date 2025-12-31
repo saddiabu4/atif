@@ -42,18 +42,18 @@ export function AdminSettings() {
 							<SettingsIcon className='w-5 h-5 text-blue-600' />
 							<CardTitle>Commission & Pricing</CardTitle>
 						</div>
-						<motion.button
+						<motion.div
 							onClick={handleSave}
 							animate={{
 								backgroundColor: saved
 									? "rgb(34, 197, 94)"
 									: "rgb(59, 130, 246)",
 							}}
-							className='flex items-center gap-2 px-4 py-2 text-white rounded-lg text-sm font-medium transition-colors'
+							className='flex items-center gap-2 px-4 py-2 text-white rounded-lg text-sm font-medium transition-colors cursor-pointer'
 						>
 							<Save className='w-4 h-4' />
 							{saved ? "Saved" : "Save"}
-						</motion.button>
+						</motion.div>
 					</div>
 				</CardHeader>
 				<CardContent className='pt-6'>

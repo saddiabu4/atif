@@ -52,7 +52,7 @@ export function UserHome({ onRouteSelect }) {
 				<div className='relative overflow-hidden rounded-3xl bg-linear-to-br from-blue-600 to-blue-800 p-6 shadow-lg'>
 					<motion.div
 						className='absolute top-0 right-0 w-40 h-40 bg-blue-400/20 rounded-full blur-3xl'
-						animate={{ scale: [1, 1.2, 1], rotate: [0, 360] }}
+						animate={{ scale: [1, 1.2], rotate: [0, 360] }}
 						transition={{ duration: 20, repeat: Infinity }}
 					/>
 					<div className='relative z-10'>
@@ -104,14 +104,14 @@ export function UserHome({ onRouteSelect }) {
 
 				<AnimatePresence mode='popLayout'>
 					{routes.map((route, index) => (
-						<motion.button
+						<motion.div
 							key={route.id}
 							variants={cardHoverVariants}
 							initial='rest'
 							whileHover='hover'
 							whileTap='tap'
 							onClick={() => handleRouteClick(route)}
-							className='w-full text-left overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-lg transition-shadow'
+							className='w-full cursor-pointer overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-lg transition-shadow'
 						>
 							<motion.div
 								className='relative'
@@ -211,17 +211,19 @@ export function UserHome({ onRouteSelect }) {
 									</motion.div>
 
 									{/* CTA Button */}
-									<motion.button
+									<button
 										className='w-full bg-blue-600 text-white font-semibold py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-blue-700 transition-colors mt-3'
-										whileHover={{ scale: 1.02 }}
-										whileTap={{ scale: 0.98 }}
+										onClick={(e) => {
+											e.stopPropagation()
+											handleRouteClick(route)
+										}}
 									>
 										Bron qilish
 										<ArrowRight className='w-4 h-4' />
-									</motion.button>
+									</button>
 								</div>
 							</motion.div>
-						</motion.button>
+						</motion.div>
 					))}
 				</AnimatePresence>
 			</motion.div>

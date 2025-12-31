@@ -56,8 +56,9 @@ export function BookingSuccess({ booking, onDone }) {
 		>
 			{/* Success Animation */}
 			<motion.div variants={itemVariants} className='mb-8'>
+				{" "}
 				<motion.div
-					animate={{ scale: [0.8, 1.1, 1] }}
+					animate={{ scale: [0.8, 1] }}
 					transition={{ duration: 0.6, type: "spring" }}
 					className='flex justify-center'
 				>
@@ -104,9 +105,9 @@ export function BookingSuccess({ booking, onDone }) {
 							Save this for your records
 						</p>
 					</div>{" "}
-					<motion.button
+					<motion.div
 						onClick={handleCopyRef}
-						className='shrink-0 p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors'
+						className='shrink-0 p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors cursor-pointer'
 						whileHover={{ scale: 1.05 }}
 						whileTap={{ scale: 0.95 }}
 					>
@@ -115,7 +116,7 @@ export function BookingSuccess({ booking, onDone }) {
 								copied ? "text-emerald-300" : ""
 							}`}
 						/>
-					</motion.button>
+					</motion.div>
 				</div>
 			</motion.div>
 
@@ -209,23 +210,23 @@ export function BookingSuccess({ booking, onDone }) {
 
 			{/* Action Buttons */}
 			<motion.div variants={itemVariants} className='w-full space-y-3'>
-				<motion.button
+				<motion.div
 					onClick={onDone}
-					className='w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition-colors flex items-center justify-center gap-2'
+					className='w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 cursor-pointer'
 					whileHover={{ scale: 1.02 }}
 					whileTap={{ scale: 0.98 }}
 				>
 					Back to Home
 					<ArrowRight className='w-4 h-4' />
-				</motion.button>
-				<motion.button
-					className='w-full bg-slate-100 text-slate-900 font-bold py-4 rounded-xl hover:bg-slate-200 transition-colors flex items-center justify-center gap-2'
+				</motion.div>
+				<motion.div
+					className='w-full bg-slate-100 text-slate-900 font-bold py-4 rounded-xl hover:bg-slate-200 transition-colors flex items-center justify-center gap-2 cursor-pointer'
 					whileHover={{ scale: 1.02 }}
 					whileTap={{ scale: 0.98 }}
 				>
 					<Share2 className='w-4 h-4' />
 					Share Booking
-				</motion.button>
+				</motion.div>
 			</motion.div>
 		</motion.div>
 	)

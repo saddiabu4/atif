@@ -564,18 +564,16 @@ function DriverProfile({ onShowToast }) {
 					<CardContent className='space-y-2'>
 						{Object.entries(driver.documents).map(([doc, status]) => {
 							const docLabels = {
-								drivingLicense: 'Haydovchi guvohnomasi',
-								insuranceCertificate: 'Sug\'urta sertifikati',
-								carRegistration: 'Avtomobil roʻyxati'
+								drivingLicense: "Haydovchi guvohnomasi",
+								insuranceCertificate: "Sug'urta sertifikati",
+								carRegistration: "Avtomobil roʻyxati",
 							}
 							return (
 								<div
 									key={doc}
 									className='flex items-center justify-between py-2 border-b last:border-0'
 								>
-									<p className='text-sm font-medium'>
-										{docLabels[doc] || doc}
-									</p>
+									<p className='text-sm font-medium'>{docLabels[doc] || doc}</p>
 									<StatusBadge status={status} />
 								</div>
 							)

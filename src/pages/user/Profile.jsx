@@ -93,13 +93,13 @@ export function UserProfile({ onLogout }) {
 									</p>
 								</div>
 							</div>
-							<motion.button
-								className='p-2 bg-white/20 rounded-lg hover:bg-white/30 transition-colors'
+							<motion.div
+								className='p-2 bg-white/20 rounded-lg hover:bg-white/30 transition-colors cursor-pointer'
 								whileHover={{ scale: 1.1 }}
 								whileTap={{ scale: 0.95 }}
 							>
 								<Settings className='w-5 h-5 text-white' />
-							</motion.button>
+							</motion.div>
 						</div>
 
 						{/* Quick Stats */}
@@ -218,9 +218,9 @@ export function UserProfile({ onLogout }) {
 							color: "indigo",
 						},
 					].map((action, idx) => (
-						<motion.button
+						<motion.div
 							key={idx}
-							className={`w-full rounded-2xl p-4 flex items-center gap-3 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all group bg-white`}
+							className={`w-full rounded-2xl p-4 flex items-center gap-3 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all group bg-white cursor-pointer`}
 							whileHover={{ scale: 1.02 }}
 							whileTap={{ scale: 0.98 }}
 						>
@@ -258,7 +258,7 @@ export function UserProfile({ onLogout }) {
 							>
 								→
 							</motion.div>
-						</motion.button>
+						</motion.div>
 					))}
 				</div>
 			</motion.div>
@@ -307,31 +307,31 @@ export function UserProfile({ onLogout }) {
 							{ label: "Notifications", icon: Bell },
 							{ label: "Payment Methods", icon: CreditCard },
 						].map((setting, idx) => (
-							<motion.button
+							<motion.div
 								key={idx}
-								className='w-full bg-white rounded-2xl p-4 border border-slate-200 text-left font-semibold text-slate-900 hover:bg-slate-50 transition-colors flex items-center gap-3'
+								className='w-full bg-white rounded-2xl p-4 border border-slate-200 text-left font-semibold text-slate-900 hover:bg-slate-50 transition-colors flex items-center gap-3 cursor-pointer'
 								whileHover={{ scale: 1.02 }}
 								whileTap={{ scale: 0.98 }}
 							>
 								<setting.icon className='w-5 h-5 text-slate-600' />
 								{setting.label}
-							</motion.button>
+							</motion.div>
 						))}
 					</div>
 				</motion.div>
 			)}
 
 			{/* Logout Button */}
-			<motion.button
+			<motion.div
 				onClick={onLogout}
-				className='w-full bg-red-600 text-white font-bold py-4 rounded-xl hover:bg-red-700 transition-colors flex items-center justify-center gap-2 mt-8'
+				className='w-full bg-red-600 text-white font-bold py-4 rounded-xl hover:bg-red-700 transition-colors flex items-center justify-center gap-2 mt-8 cursor-pointer'
 				whileHover={{ scale: 1.02 }}
 				whileTap={{ scale: 0.98 }}
 				variants={itemVariants}
 			>
 				<LogOut className='w-5 h-5' />
 				Logout (Demo)
-			</motion.button>
+			</motion.div>
 
 			{/* Footer Note */}
 			<motion.div

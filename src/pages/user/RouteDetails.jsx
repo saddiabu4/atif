@@ -81,14 +81,14 @@ export function RouteDetails({ routeId, onBack, onBooking }) {
 				variants={itemVariants}
 				className='flex items-center gap-3 mb-6 pt-2'
 			>
-				<motion.button
+				<motion.div
 					onClick={onBack}
-					className='shrink-0 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200 transition-colors'
+					className='shrink-0 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200 transition-colors cursor-pointer'
 					whileHover={{ scale: 1.05 }}
 					whileTap={{ scale: 0.95 }}
 				>
 					<ChevronLeft className='w-5 h-5 text-slate-700' />
-				</motion.button>
+				</motion.div>
 				<div>
 					<h1 className='text-2xl font-bold text-slate-900'>
 						{route.destination}
@@ -260,9 +260,10 @@ export function RouteDetails({ routeId, onBack, onBooking }) {
 						exit={{ opacity: 0, y: 40 }}
 						className='fixed bottom-24 left-4 right-4 max-w-sm mx-auto'
 					>
-						<motion.button
+						{" "}
+						<motion.div
 							onClick={() => setShowBookingSummary(true)}
-							className='w-full bg-linear-to-r from-blue-600 to-blue-700 text-white font-bold py-4 rounded-xl shadow-xl flex items-center justify-between px-5'
+							className='w-full bg-linear-to-r from-blue-600 to-blue-700 text-white font-bold py-4 rounded-xl shadow-xl flex items-center justify-between px-5 cursor-pointer'
 							whileHover={{ scale: 1.02 }}
 							whileTap={{ scale: 0.98 }}
 						>
@@ -273,7 +274,7 @@ export function RouteDetails({ routeId, onBack, onBooking }) {
 							<div className='text-right'>
 								<ChevronLeft className='w-6 h-6 rotate-180' />
 							</div>
-						</motion.button>
+						</motion.div>
 					</motion.div>
 				)}
 			</AnimatePresence>
@@ -383,22 +384,22 @@ function BookingSummaryModal({
 
 				{/* Action Buttons */}
 				<div className='space-y-3'>
-					<motion.button
+					<motion.div
 						onClick={onConfirm}
-						className='w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition-colors'
+						className='w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition-colors cursor-pointer'
 						whileHover={{ scale: 1.02 }}
 						whileTap={{ scale: 0.98 }}
 					>
 						Confirm & Pay
-					</motion.button>
-					<motion.button
+					</motion.div>
+					<motion.div
 						onClick={onClose}
-						className='w-full bg-slate-200 text-slate-900 font-bold py-4 rounded-xl hover:bg-slate-300 transition-colors'
+						className='w-full bg-slate-200 text-slate-900 font-bold py-4 rounded-xl hover:bg-slate-300 transition-colors cursor-pointer'
 						whileHover={{ scale: 1.02 }}
 						whileTap={{ scale: 0.98 }}
 					>
 						Cancel
-					</motion.button>
+					</motion.div>
 				</div>
 			</motion.div>
 		</motion.div>

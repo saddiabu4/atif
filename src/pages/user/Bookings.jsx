@@ -80,10 +80,10 @@ export function MyBookings() {
 						count: bookings.filter((b) => b.status === "completed").length,
 					},
 				].map((tab) => (
-					<motion.button
+					<motion.div
 						key={tab.id}
 						onClick={() => setFilter(tab.id)}
-						className={`px-4 py-2 rounded-full font-semibold text-sm transition-all ${
+						className={`px-4 py-2 rounded-full font-semibold text-sm transition-all cursor-pointer ${
 							filter === tab.id
 								? "bg-blue-600 text-white shadow-md"
 								: "bg-slate-200 text-slate-700 hover:bg-slate-300"
@@ -101,7 +101,7 @@ export function MyBookings() {
 								{tab.count}
 							</span>
 						)}
-					</motion.button>
+					</motion.div>
 				))}
 			</motion.div>
 			{/* Bookings List */}
@@ -117,7 +117,7 @@ export function MyBookings() {
 							const isUpcoming = booking.status === "upcoming"
 
 							return (
-								<motion.button
+								<motion.div
 									key={booking.id}
 									variants={cardHoverVariants}
 									initial='rest'
@@ -126,7 +126,7 @@ export function MyBookings() {
 									onClick={() =>
 										setExpandedBooking(isExpanded ? null : booking.id)
 									}
-									className='w-full text-left overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-lg transition-shadow'
+									className='w-full text-left overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-lg transition-shadow cursor-pointer'
 								>
 									<motion.div layout className='p-4 space-y-3'>
 										{/* Header Row */}
@@ -163,7 +163,6 @@ export function MyBookings() {
 												<ChevronDown className='w-5 h-5 text-slate-400' />
 											</motion.div>
 										</div>
-
 										{/* Details Grid */}
 										<div className='grid grid-cols-3 gap-3 p-3 bg-slate-50 rounded-lg'>
 											<div>
@@ -200,7 +199,6 @@ export function MyBookings() {
 												</p>
 											</div>
 										</div>
-
 										{/* Expanded Details */}
 										<AnimatePresence>
 											{isExpanded && (
@@ -235,7 +233,7 @@ export function MyBookings() {
 															<code className='font-mono font-bold text-slate-900'>
 																{booking.bookingRef}
 															</code>
-															<motion.button
+															<motion.div
 																whileHover={{
 																	scale: 1.1,
 																}}
@@ -248,10 +246,10 @@ export function MyBookings() {
 																		booking.bookingRef
 																	)
 																}}
-																className='text-blue-600 hover:text-blue-700 font-semibold text-sm'
+																className='text-blue-600 hover:text-blue-700 font-semibold text-sm cursor-pointer'
 															>
 																Copy
-															</motion.button>
+															</motion.div>
 														</motion.div>
 													</div>
 
@@ -303,8 +301,8 @@ export function MyBookings() {
 													</div>
 
 													{isUpcoming && (
-														<motion.button
-															className='w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition-colors mt-4'
+														<motion.div
+															className='w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition-colors mt-4 flex items-center justify-center cursor-pointer'
 															whileHover={{
 																scale: 1.02,
 															}}
@@ -313,13 +311,13 @@ export function MyBookings() {
 															}}
 														>
 															View E-Ticket
-														</motion.button>
+														</motion.div>
 													)}
 												</motion.div>
 											)}
-										</AnimatePresence>
+										</AnimatePresence>{" "}
 									</motion.div>
-								</motion.button>
+								</motion.div>
 							)
 						})
 					) : (

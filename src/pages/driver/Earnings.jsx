@@ -96,7 +96,7 @@ export function DriverEarnings() {
 
 			{/* Stat Cards Grid */}
 			<motion.div
-				className='grid grid-cols-1 md:grid-cols-3 gap-6 mb-8'
+				className='grid grid-cols-1 sm:grid-cols-1 gap-6 mb-8'
 				variants={containerVariants}
 			>
 				<StatCard
@@ -118,7 +118,7 @@ export function DriverEarnings() {
 			</motion.div>
 
 			{/* Detailed Cards */}
-			<div className='grid grid-cols-1 lg:grid-cols-2 gap-6'>
+			<div className='grid grid-cols-1 lg:grid-cols-1 gap-6'>
 				{/* Earning Breakdown */}
 				<motion.div variants={itemVariants}>
 					<Card className='h-full'>

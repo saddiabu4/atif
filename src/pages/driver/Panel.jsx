@@ -141,7 +141,7 @@ function DriverHome({ onShowToast }) {
 			/>
 			<div className='space-y-3 px-1'>
 				{/* Status Card */}
-				<Card className='border-0 shadow-md bg-white rounded-2xl overflow-hidden'>
+				<Card className='border-0 shadow-md bg-white rounded-2xl overflow-hidden w-full sm:max-w-96'>
 					<CardContent className='p-4'>
 						<div className='flex items-center justify-between gap-3'>
 							<div className='flex-1'>
@@ -173,7 +173,7 @@ function DriverHome({ onShowToast }) {
 
 				{/* New Trip Request Card */}
 				{newRequest && (
-					<Card className='border-0 shadow-2xl bg-linear-to-br from-blue-500 to-blue-600 text-white rounded-3xl overflow-hidden'>
+					<Card className='border-0 shadow-2xl bg-linear-to-br from-blue-500 to-blue-600 text-white rounded-3xl overflow-hidden w-full sm:max-w-96'>
 						<CardContent className='p-5 space-y-4'>
 							<div className='bg-white text-black bg-opacity-20 rounded-2xl px-4 py-2.5 inline-block'>
 								<span className='text-sm font-bold tracking-wide'>
@@ -244,9 +244,9 @@ function DriverHome({ onShowToast }) {
 				)}
 
 				{isOnline && !newRequest && (
-					<Card className='border-0 shadow-sm bg-linear-to-br from-purple-50 to-blue-50'>
+					<Card className='border-0 shadow-sm bg-linear-to-br from-purple-50 to-blue-50 w-full sm:max-w-96'>
 						<CardContent className='pt-6'>
-							<div className='grid grid-cols-2 gap-4'>
+							<div className='grid grid-cols-1 gap-4'>
 								<div>
 									<p className='text-2xl font-bold text-purple-600'>
 										{driver.earnings.today.toLocaleString("uz-UZ")} so'm
@@ -265,7 +265,7 @@ function DriverHome({ onShowToast }) {
 				)}
 
 				{!isOnline && (
-					<Card className='border-0 shadow-sm bg-amber-50 border-l-4 border-l-amber-500'>
+					<Card className='border-0 shadow-sm bg-amber-50 border-l-4 border-l-amber-500 w-full sm:max-w-96'>
 						<CardContent className='pt-6'>
 							<div className='flex gap-2'>
 								<AlertCircle className='w-5 h-5 text-amber-600 shrink-0 mt-0.5' />
@@ -324,7 +324,10 @@ function DriverOrders({ onShowToast }) {
 			{orders.length > 0 ? (
 				<div className='space-y-3'>
 					{orders.map((order) => (
-						<Card key={order.id} className='border-0 shadow-sm overflow-hidden'>
+						<Card
+							key={order.id}
+							className='border-0 shadow-sm overflow-hidden w-full sm:max-w-96'
+						>
 							<CardContent className='p-4 space-y-3'>
 								<div className='flex items-start justify-between'>
 									<div className='flex-1'>
@@ -424,8 +427,8 @@ function DriverEarnings({ onShowToast }) {
 		<MobileContent>
 			<MobileHeader title='Daromad' showBack={false} />
 			<div className='space-y-4'>
-				<div className='grid grid-cols-2 gap-3'>
-					<Card className='border-0 shadow-sm bg-linear-to-br from-green-400 to-green-600 text-white'>
+				<div className='grid grid-cols-1 gap-3'>
+					<Card className='border-0 shadow-sm bg-linear-to-br from-green-400 to-green-600 text-white w-full sm:max-w-96'>
 						<CardContent className='pt-6'>
 							<p className='text-sm font-medium opacity-90'>Bugun</p>
 							<p className='text-2xl font-bold mt-2'>
@@ -433,7 +436,7 @@ function DriverEarnings({ onShowToast }) {
 							</p>
 						</CardContent>
 					</Card>
-					<Card className='border-0 shadow-sm bg-linear-to-br from-blue-400 to-blue-600 text-white'>
+					<Card className='border-0 shadow-sm bg-linear-to-br from-blue-400 to-blue-600 text-white w-full sm:max-w-96'>
 						<CardContent className='pt-6'>
 							<p className='text-sm font-medium opacity-90'>Bu hafta</p>
 							<p className='text-2xl font-bold mt-2'>
@@ -441,7 +444,7 @@ function DriverEarnings({ onShowToast }) {
 							</p>
 						</CardContent>
 					</Card>
-					<Card className='border-0 shadow-sm bg-linear-to-br from-purple-400 to-purple-600 text-white col-span-2'>
+					<Card className='border-0 shadow-sm bg-linear-to-br from-purple-400 to-purple-600 text-white col-span-2 w-full sm:max-w-96'>
 						<CardContent className='pt-6'>
 							<p className='text-sm font-medium opacity-90'>Bu oy</p>
 							<p className='text-2xl font-bold mt-2'>
@@ -455,7 +458,10 @@ function DriverEarnings({ onShowToast }) {
 					<h3 className='font-semibold text-gray-900 mb-3'>So'nggi safarlar</h3>
 					<div className='space-y-2'>
 						{earningsData.recentTrips.map((trip) => (
-							<Card key={trip.id} className='border-0 shadow-sm'>
+							<Card
+								key={trip.id}
+								className='border-0 shadow-sm w-full sm:max-w-96'
+							>
 								<CardContent className='p-3'>
 									<div className='flex items-start justify-between gap-2'>
 										<div className='flex-1 min-w-0'>
@@ -519,7 +525,7 @@ function DriverProfile({ onShowToast }) {
 		<MobileContent>
 			<MobileHeader title='Profil' showBack={false} />
 			<div className='space-y-4'>
-				<Card className='border-0 shadow-sm'>
+				<Card className='border-0 shadow-sm w-full sm:max-w-96'>
 					<CardContent className='pt-6'>
 						<div className='flex items-center gap-4'>
 							<img
@@ -542,7 +548,7 @@ function DriverProfile({ onShowToast }) {
 					</CardContent>
 				</Card>
 
-				<Card className='border-0 shadow-sm'>
+				<Card className='border-0 shadow-sm w-full sm:max-w-96'>
 					<CardHeader className='pb-3'>
 						<CardTitle className='text-base'>Aloqa ma'lumotlari</CardTitle>
 					</CardHeader>
@@ -562,7 +568,7 @@ function DriverProfile({ onShowToast }) {
 					</CardContent>
 				</Card>
 
-				<Card className='border-0 shadow-sm'>
+				<Card className='border-0 shadow-sm w-full sm:max-w-96'>
 					<CardHeader className='pb-3'>
 						<CardTitle className='text-base'>Transport ma'lumoti</CardTitle>
 					</CardHeader>
@@ -588,7 +594,7 @@ function DriverProfile({ onShowToast }) {
 					</CardContent>
 				</Card>
 
-				<Card className='border-0 shadow-sm'>
+				<Card className='border-0 shadow-sm w-full sm:max-w-96'>
 					<CardHeader className='pb-3'>
 						<CardTitle className='text-base'>Hujjatlar</CardTitle>
 					</CardHeader>

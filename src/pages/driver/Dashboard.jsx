@@ -61,7 +61,7 @@ export function DriverDashboard() {
 			</Header>
 
 			<Container>
-				<Grid cols={3} className='mb-8 sm:grid-cols-1 md:grid-cols-2'>
+				<Grid cols={3} className='mb-8 sm:grid-cols-1 md:grid-cols-1'>
 					{" "}
 					<Card>
 						<CardContent className='pt-6'>
@@ -102,7 +102,7 @@ export function DriverDashboard() {
 					</Card>
 				</Grid>
 
-				<Grid cols={2} className='lg:grid-cols-1'>
+				<Grid cols={1} className='lg:grid-cols-1'>
 					{" "}
 					<Card>
 						<CardHeader>

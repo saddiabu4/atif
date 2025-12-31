@@ -115,7 +115,7 @@ export function DriverOrders() {
 						</div>
 
 						{/* Details Grid */}
-						<div className='grid grid-cols-3 gap-3 p-3 bg-slate-50 rounded-lg'>
+						<div className='grid grid-cols-1 gap-3 p-3 bg-slate-50 rounded-lg'>
 							<motion.div whileHover={{ scale: 1.05 }}>
 								<p className='text-xs text-slate-600 font-medium'>Distance</p>
 								<p className='font-bold text-slate-900 text-lg'>

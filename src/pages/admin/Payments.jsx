@@ -50,8 +50,9 @@ export function AdminPayments() {
 	if (loading) {
 		return (
 			<motion.div
-				animate={{ rotate: 360 }}
-				transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 0.2 }}
 				className='p-8 flex justify-center'
 			>
 				<CreditCard className='w-8 h-8 text-slate-400' />
@@ -69,18 +70,20 @@ export function AdminPayments() {
 			{/* Payment Stats Grid */}
 			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
 				<motion.div
-					whileHover={{ translateY: -4 }}
-					transition={{ duration: 0.2 }}
+					initial={{ opacity: 0, y: 8 }}
+					animate={{ opacity: 1, y: 0 }}
+					exit={{ opacity: 0, y: -8 }}
+					transition={{ duration: 0.2, ease: "easeOut" }}
 				>
 					<Card className='border-0 shadow-sm hover:shadow-md transition-shadow'>
 						<CardContent className='pt-6'>
 							<div className='flex items-start justify-between'>
 								<div>
 									<p className='text-sm font-medium text-slate-600'>
-										Total Revenue
+										Jami Daromad
 									</p>
 									<p className='text-3xl font-bold text-slate-900 mt-2'>
-										SAR {stats?.totalRevenue?.toFixed(0) || 0}
+										{stats?.totalRevenue?.toLocaleString("uz-UZ") || 0} so'm
 									</p>
 								</div>
 								<div className='p-3 bg-green-50 rounded-lg'>
@@ -92,18 +95,20 @@ export function AdminPayments() {
 				</motion.div>
 
 				<motion.div
-					whileHover={{ translateY: -4 }}
-					transition={{ duration: 0.2 }}
+					initial={{ opacity: 0, y: 8 }}
+					animate={{ opacity: 1, y: 0 }}
+					exit={{ opacity: 0, y: -8 }}
+					transition={{ duration: 0.2, ease: "easeOut" }}
 				>
 					<Card className='border-0 shadow-sm hover:shadow-md transition-shadow'>
 						<CardContent className='pt-6'>
 							<div className='flex items-start justify-between'>
 								<div>
 									<p className='text-sm font-medium text-slate-600'>
-										Total Commission
+										Jami Komissiya
 									</p>
 									<p className='text-3xl font-bold text-slate-900 mt-2'>
-										SAR {stats?.totalCommission?.toFixed(0) || 0}
+										{stats?.totalCommission?.toLocaleString("uz-UZ") || 0} so'm
 									</p>
 								</div>
 								<div className='p-3 bg-blue-50 rounded-lg'>
@@ -115,15 +120,17 @@ export function AdminPayments() {
 				</motion.div>
 
 				<motion.div
-					whileHover={{ translateY: -4 }}
-					transition={{ duration: 0.2 }}
+					initial={{ opacity: 0, y: 8 }}
+					animate={{ opacity: 1, y: 0 }}
+					exit={{ opacity: 0, y: -8 }}
+					transition={{ duration: 0.2, ease: "easeOut" }}
 				>
 					<Card className='border-0 shadow-sm hover:shadow-md transition-shadow'>
 						<CardContent className='pt-6'>
 							<div className='flex items-start justify-between'>
 								<div>
 									<p className='text-sm font-medium text-slate-600'>
-										Commission Rate
+										Komissiya Darajasi
 									</p>
 									<p className='text-3xl font-bold text-slate-900 mt-2'>
 										{stats?.commissionPercentage || 0}%
@@ -141,19 +148,19 @@ export function AdminPayments() {
 			{/* Recent Payments */}
 			<Card className='border-0 shadow-sm'>
 				<CardHeader className='border-b border-slate-100 flex items-center justify-between'>
-					<CardTitle>Recent Transactions</CardTitle>
+					<CardTitle>So'nggi Tranzaksiyalar</CardTitle>
 					<button
 						onClick={handleExport}
 						className='flex items-center gap-2 px-3 py-2 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-lg text-sm font-medium transition-colors'
 					>
 						<Download className='w-4 h-4' />
-						Export
+						Eksport
 					</button>
 				</CardHeader>
 				<CardContent className='pt-6'>
 					{payments.length === 0 ? (
 						<div className='text-center py-8'>
-							<p className='text-slate-500'>No payments recorded</p>
+							<p className='text-slate-500'>To'lov qaydlari yo'q</p>
 						</div>
 					) : (
 						<div className='overflow-x-auto'>
@@ -161,22 +168,22 @@ export function AdminPayments() {
 								<thead>
 									<tr className='border-b border-slate-200'>
 										<th className='text-left py-3 px-4 text-slate-600 font-medium'>
-											Order ID
+											Buyurtma ID
 										</th>
 										<th className='text-left py-3 px-4 text-slate-600 font-medium'>
-											Amount
+											Miqdori
 										</th>
 										<th className='text-left py-3 px-4 text-slate-600 font-medium'>
-											Commission
+											Komissiya
 										</th>
 										<th className='text-left py-3 px-4 text-slate-600 font-medium'>
-											Driver Earnings
+											Haydovchi Daromadi
 										</th>
 										<th className='text-left py-3 px-4 text-slate-600 font-medium'>
-											Status
+											Holat
 										</th>
 										<th className='text-left py-3 px-4 text-slate-600 font-medium'>
-											Date
+											Sana
 										</th>
 									</tr>
 								</thead>

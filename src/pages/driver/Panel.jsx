@@ -282,11 +282,11 @@ function DriverOrders({ onShowToast }) {
 	])
 
 	const handleNavigate = (destination) => {
-		onShowToast(`Opening navigation to ${destination}`, "success")
+		onShowToast(`${destination} manziliga navigatsiya ocilmoqda`, "success")
 	}
 
 	const handleCall = (name) => {
-		onShowToast(`Calling ${name}...`, "info")
+		onShowToast(`${name} ga qo'ng'iroq qilinmoqda...`, "info")
 	}
 
 	return (
@@ -331,7 +331,7 @@ function DriverOrders({ onShowToast }) {
 										size='sm'
 									>
 										<Navigation2 className='w-4 h-4 mr-1' />
-										Navigation
+										Navigatsiya
 									</Button>
 									<Button
 										onClick={() => handleCall(order.passenger.name)}

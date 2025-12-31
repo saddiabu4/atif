@@ -37,8 +37,9 @@ export function AdminOrders() {
 	if (loading) {
 		return (
 			<motion.div
-				animate={{ rotate: 360 }}
-				transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 0.2 }}
 				className='p-8 flex justify-center'
 			>
 				<Navigation className='w-8 h-8 text-slate-400' />
@@ -71,26 +72,28 @@ export function AdminOrders() {
 				<CardHeader className='border-b border-slate-100'>
 					<CardTitle className='flex items-center gap-2'>
 						<Navigation className='w-5 h-5 text-blue-600' />
-						All Orders
+						Barcha Buyurtmalar
 					</CardTitle>
 				</CardHeader>
 				<CardContent className='pt-6'>
 					{orders.length === 0 ? (
 						<div className='text-center py-8'>
-							<p className='text-slate-500'>No orders found</p>
+							<p className='text-slate-500'>Buyurtmalar topilmadi</p>
 						</div>
 					) : (
 						<div className='overflow-x-auto'>
 							<Table>
 								<TableHeader>
 									<TableRow className='border-b border-slate-200 hover:bg-transparent'>
-										<TableHead className='text-slate-600'>Order ID</TableHead>
-										<TableHead className='text-slate-600'>Route</TableHead>
-										<TableHead className='text-slate-600'>Distance</TableHead>
-										<TableHead className='text-slate-600'>Fare</TableHead>
-										<TableHead className='text-slate-600'>Commission</TableHead>
-										<TableHead className='text-slate-600'>Status</TableHead>
-										<TableHead className='text-slate-600'>Actions</TableHead>
+										<TableHead className='text-slate-600'>
+											Buyurtma ID
+										</TableHead>
+										<TableHead className='text-slate-600'>Yo'nalish</TableHead>
+										<TableHead className='text-slate-600'>Masofasi</TableHead>
+										<TableHead className='text-slate-600'>Haraj</TableHead>
+										<TableHead className='text-slate-600'>Komissiya</TableHead>
+										<TableHead className='text-slate-600'>Holat</TableHead>
+										<TableHead className='text-slate-600'>Amallar</TableHead>
 									</TableRow>
 								</TableHeader>
 								<TableBody>
@@ -119,10 +122,10 @@ export function AdminOrders() {
 												{order.distance?.toFixed(1)} km
 											</TableCell>
 											<TableCell className='font-medium text-slate-900'>
-												SAR {order.fare?.toFixed(2)}
+												{order.fare?.toLocaleString("uz-UZ")} so'm
 											</TableCell>
 											<TableCell className='text-slate-600'>
-												SAR {order.commission?.toFixed(2)}
+												{order.commission?.toLocaleString("uz-UZ")} so'm
 											</TableCell>
 											<TableCell>
 												<Badge
@@ -140,7 +143,7 @@ export function AdminOrders() {
 														className='text-xs'
 														onClick={() => handleCancelOrder(order.id)}
 													>
-														Cancel
+														Bekor qilish
 													</Button>
 												) : (
 													<span className='text-xs text-slate-400'>—</span>

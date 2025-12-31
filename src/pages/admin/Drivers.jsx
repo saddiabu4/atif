@@ -37,8 +37,9 @@ export function AdminDrivers() {
 	if (loading) {
 		return (
 			<motion.div
-				animate={{ rotate: 360 }}
-				transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 0.2 }}
 				className='p-8 flex justify-center'
 			>
 				<Truck className='w-8 h-8 text-slate-400' />
@@ -56,32 +57,32 @@ export function AdminDrivers() {
 				<CardHeader className='border-b border-slate-100'>
 					<CardTitle className='flex items-center gap-2'>
 						<Truck className='w-5 h-5 text-blue-600' />
-						All Drivers
+						Barcha Haydovchilar
 					</CardTitle>
 				</CardHeader>
 				<CardContent className='pt-6'>
 					{drivers.length === 0 ? (
 						<div className='text-center py-8'>
-							<p className='text-slate-500'>No drivers found</p>
+							<p className='text-slate-500'>Haydovchilar topilmadi</p>
 						</div>
 					) : (
 						<div className='overflow-x-auto'>
 							<Table>
 								<TableHeader>
 									<TableRow className='border-b border-slate-200 hover:bg-transparent'>
-										<TableHead className='text-slate-600'>Name</TableHead>
-										<TableHead className='text-slate-600'>Vehicle</TableHead>
-										<TableHead className='text-slate-600'>Status</TableHead>
+										<TableHead className='text-slate-600'>Ism</TableHead>
+										<TableHead className='text-slate-600'>Transport</TableHead>
+										<TableHead className='text-slate-600'>Holat</TableHead>
 										<TableHead className='text-slate-600'>
-											Verification
+											Tasdiqlanish
 										</TableHead>
 										<TableHead className='text-slate-600 text-center'>
-											Trips
+											Safarlar
 										</TableHead>
 										<TableHead className='text-slate-600 text-center'>
-											Rating
+											Reyting
 										</TableHead>
-										<TableHead className='text-slate-600'>Actions</TableHead>
+										<TableHead className='text-slate-600'>Amallar</TableHead>
 									</TableRow>
 								</TableHeader>
 								<TableBody>
@@ -146,13 +147,13 @@ export function AdminDrivers() {
 														className='text-xs'
 														onClick={() => handleVerify(driver.id)}
 													>
-														Verify
+														Tasdiqlash
 													</Button>
 												) : (
 													<div className='flex items-center gap-2 text-green-600'>
 														<CheckCircle className='w-4 h-4' />
 														<span className='text-xs font-medium'>
-															Verified
+															Tasdiqland
 														</span>
 													</div>
 												)}

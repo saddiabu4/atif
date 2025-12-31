@@ -67,8 +67,8 @@ export function DriverProfile() {
 		>
 			{/* Header */}
 			<motion.div variants={itemVariants} className='mb-8'>
-				<h1 className='text-3xl font-bold text-slate-900'>Profile</h1>
-				<p className='text-slate-600 text-sm mt-1'>Your account information</p>
+				<h1 className='text-3xl font-bold text-slate-900'>Profil</h1>
+				<p className='text-slate-600 text-sm mt-1'>Sizning hisob ma'lumoti</p>
 			</motion.div>
 
 			{/* Profile Card */}

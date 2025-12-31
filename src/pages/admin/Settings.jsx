@@ -40,7 +40,7 @@ export function AdminSettings() {
 					<div className='flex items-center justify-between'>
 						<div className='flex items-center gap-2'>
 							<SettingsIcon className='w-5 h-5 text-blue-600' />
-							<CardTitle>Commission & Pricing</CardTitle>
+							<CardTitle>Komissiya va Narx</CardTitle>
 						</div>
 						<motion.div
 							onClick={handleSave}
@@ -52,7 +52,7 @@ export function AdminSettings() {
 							className='flex items-center gap-2 px-4 py-2 text-white rounded-lg text-sm font-medium transition-colors cursor-pointer'
 						>
 							<Save className='w-4 h-4' />
-							{saved ? "Saved" : "Save"}
+							{saved ? "Saqlandi" : "Saqlash"}
 						</motion.div>
 					</div>
 				</CardHeader>
@@ -60,7 +60,7 @@ export function AdminSettings() {
 					<div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
 						<div>
 							<label className='block text-sm font-medium text-slate-700 mb-2'>
-								Commission Percentage (%)
+								Komissiya Foizi (%)
 							</label>
 							<Input
 								type='number'
@@ -71,13 +71,13 @@ export function AdminSettings() {
 								className='border-slate-200'
 							/>
 							<p className='text-xs text-slate-600 mt-1'>
-								Platform commission from each ride
+								Har bir safardan platforma komissiyasi
 							</p>
 						</div>
 
 						<div>
 							<label className='block text-sm font-medium text-slate-700 mb-2'>
-								Minimum Fare (SAR)
+								Minimum Haraj (so'm)
 							</label>
 							<Input
 								type='number'
@@ -88,13 +88,13 @@ export function AdminSettings() {
 								className='border-slate-200'
 							/>
 							<p className='text-xs text-slate-600 mt-1'>
-								Minimum charge for any ride
+								Istalgan safar uchun minimal to'lov
 							</p>
 						</div>
 
 						<div>
 							<label className='block text-sm font-medium text-slate-700 mb-2'>
-								Base Fare per KM (SAR)
+								KM uchun Asosiy Haraj (so'm)
 							</label>
 							<Input
 								type='number'
@@ -105,13 +105,13 @@ export function AdminSettings() {
 								className='border-slate-200'
 							/>
 							<p className='text-xs text-slate-600 mt-1'>
-								Per kilometer charge
+								Kilometer uchun to'lov
 							</p>
 						</div>
 
 						<div>
 							<label className='block text-sm font-medium text-slate-700 mb-2'>
-								Night Surge Multiplier (x)
+								Kechagi Qimmat Qo'shimchasi (x)
 							</label>
 							<Input
 								type='number'
@@ -122,7 +122,7 @@ export function AdminSettings() {
 								className='border-slate-200'
 							/>
 							<p className='text-xs text-slate-600 mt-1'>
-								Price multiplier for night hours (10 PM - 6 AM)
+								Kech vaqtlari narx ko'paytuvchisi (22:00 - 06:00)
 							</p>
 						</div>
 					</div>
@@ -132,22 +132,27 @@ export function AdminSettings() {
 			{/* Regions */}
 			<Card className='border-0 shadow-sm'>
 				<CardHeader className='border-b border-slate-100'>
-					<CardTitle>Active Regions</CardTitle>
+					<CardTitle>Faol Viloyatlar</CardTitle>
 				</CardHeader>
 				<CardContent className='pt-6'>
 					<div className='space-y-3'>
-						{["Riyadh", "Jeddah", "Dammam", "Mecca", "Medina"].map(
+						{["Toshkent", "Samarqand", "Buxoro", "Xorazm", "Andijon"].map(
 							(region, idx) => (
 								<motion.div
 									key={region}
-									initial={{ opacity: 0, x: -10 }}
-									animate={{ opacity: 1, x: 0 }}
-									transition={{ delay: idx * 0.1 }}
+									initial={{ opacity: 0, y: 8 }}
+									animate={{ opacity: 1, y: 0 }}
+									exit={{ opacity: 0, y: -8 }}
+									transition={{
+										delay: idx * 0.05,
+										duration: 0.2,
+										ease: "easeOut",
+									}}
 									className='flex items-center justify-between p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors'
 								>
 									<span className='font-medium text-slate-900'>{region}</span>
 									<Button size='sm' className='text-xs'>
-										Edit
+										Tahrirlash
 									</Button>
 								</motion.div>
 							)

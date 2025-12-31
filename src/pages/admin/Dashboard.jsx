@@ -66,8 +66,9 @@ export function AdminDashboard() {
 		return (
 			<div className='flex items-center justify-center h-96'>
 				<motion.div
-					animate={{ rotate: 360 }}
-					transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					transition={{ duration: 0.2 }}
 					className='p-3 bg-blue-100 rounded-full'
 				>
 					<Activity className='w-8 h-8 text-blue-600' />
@@ -77,7 +78,12 @@ export function AdminDashboard() {
 	}
 
 	const StatCard = ({ icon: Icon, label, value, trend = "up" }) => (
-		<motion.div whileHover={{ translateY: -4 }} transition={{ duration: 0.2 }}>
+		<motion.div
+			initial={{ opacity: 0, y: 8 }}
+			animate={{ opacity: 1, y: 0 }}
+			exit={{ opacity: 0, y: -8 }}
+			transition={{ duration: 0.2, ease: "easeOut" }}
+		>
 			<Card className='border-0 shadow-sm hover:shadow-md transition-shadow'>
 				<CardContent className='pt-6'>
 					<div className='flex items-start justify-between'>
@@ -100,20 +106,24 @@ export function AdminDashboard() {
 			<Grid cols={4} className='mb-8'>
 				<StatCard
 					icon={Activity}
-					label='Total Orders'
+					label='Jami Buyurtmalar'
 					value={stats.totalOrders}
 				/>
 				<StatCard
 					icon={Truck}
-					label='Active Drivers'
+					label='Faol Haydovchilar'
 					value={stats.activeDrivers}
 				/>
 				<StatCard
 					icon={DollarSign}
-					label='Total Revenue'
-					value={`SAR ${stats.totalRevenue.toFixed(0)}`}
+					label='Jami Daromad'
+					value={`${stats.totalRevenue.toLocaleString("uz-UZ")} so'm`}
 				/>
-				<StatCard icon={Users} label='Active Users' value={stats.activeUsers} />
+				<StatCard
+					icon={Users}
+					label='Faol Foydalanuvchilar'
+					value={stats.activeUsers}
+				/>
 			</Grid>
 
 			{/* Main Content Grid */}
@@ -126,12 +136,12 @@ export function AdminDashboard() {
 				>
 					<Card className='border-0 shadow-sm h-full'>
 						<CardHeader className='border-b border-slate-100 pb-4'>
-							<CardTitle className='text-lg'>Recent Orders</CardTitle>
+							<CardTitle className='text-lg'>So'nggi Buyurtmalar</CardTitle>
 						</CardHeader>
 						<CardContent className='pt-6'>
 							{orders.length === 0 ? (
 								<div className='text-center py-8'>
-									<p className='text-slate-500'>No orders yet</p>
+									<p className='text-slate-500'>Buyurtmalar yo'q</p>
 								</div>
 							) : (
 								<div className='space-y-4'>
@@ -145,15 +155,15 @@ export function AdminDashboard() {
 										>
 											<div>
 												<p className='font-medium text-sm text-slate-900'>
-													{order.pickup.address?.split(",")[0] || "Trip"}
+													{order.pickup.address?.split(",")[0] || "Safar"}
 												</p>
 												<p className='text-xs text-slate-500 mt-1'>
-													{new Date(order.createdAt).toLocaleString()}
+													{new Date(order.createdAt).toLocaleString("uz-UZ")}
 												</p>
 											</div>
 											<div className='text-right'>
 												<p className='font-bold text-green-600 text-sm'>
-													SAR {order.fare.toFixed(2)}
+													{order.fare.toLocaleString("uz-UZ")} so'm
 												</p>
 												<Badge
 													variant={
@@ -184,15 +194,16 @@ export function AdminDashboard() {
 				>
 					<Card className='border-0 shadow-sm h-full'>
 						<CardHeader className='border-b border-slate-100 pb-4'>
-							<CardTitle className='text-lg'>Performance Metrics</CardTitle>
+							<CardTitle className='text-lg'>Ishlash ko‘rsatkichlari</CardTitle>
 						</CardHeader>
+
 						<CardContent className='pt-6'>
 							<div className='space-y-6'>
-								{/* Completion Rate */}
+								{/* Yakunlash darajasi */}
 								<div>
 									<div className='flex items-center justify-between mb-3'>
 										<span className='text-sm font-medium text-slate-700'>
-											Completion Rate
+											Yakunlash darajasi
 										</span>
 										<span className='text-sm font-bold text-slate-900'>
 											{stats.completionRate}%
@@ -210,11 +221,11 @@ export function AdminDashboard() {
 									</div>
 								</div>
 
-								{/* Active Orders */}
+								{/* Faol buyurtmalar */}
 								<div>
 									<div className='flex items-center justify-between mb-3'>
 										<span className='text-sm font-medium text-slate-700'>
-											Active Orders
+											Faol buyurtmalar
 										</span>
 										<span className='text-sm font-bold text-slate-900'>
 											{stats.activeOrders}
@@ -230,11 +241,11 @@ export function AdminDashboard() {
 									</div>
 								</div>
 
-								{/* Avg Rating */}
+								{/* O‘rtacha baho */}
 								<div>
 									<div className='flex items-center justify-between mb-3'>
 										<span className='text-sm font-medium text-slate-700'>
-											Average Rating
+											O‘rtacha baho
 										</span>
 										<span className='text-sm font-bold text-slate-900'>
 											4.7 / 5.0
@@ -263,33 +274,43 @@ export function AdminDashboard() {
 			>
 				<Card className='border-0 shadow-sm'>
 					<CardHeader className='border-b border-slate-100 pb-4'>
-						<CardTitle className='text-lg'>Quick Stats</CardTitle>
+						<CardTitle className='text-lg'>Tezkor statistikalar</CardTitle>
 					</CardHeader>
+
 					<CardContent className='pt-6'>
 						<div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
 							<div className='text-center p-4 bg-slate-50 rounded-lg'>
 								<p className='text-2xl font-bold text-slate-900'>
 									{stats.completedOrders}
 								</p>
-								<p className='text-sm text-slate-600 mt-1'>Completed Orders</p>
+								<p className='text-sm text-slate-600 mt-1'>
+									Yakunlangan buyurtmalar
+								</p>
 							</div>
+
 							<div className='text-center p-4 bg-slate-50 rounded-lg'>
 								<p className='text-2xl font-bold text-slate-900'>
 									{stats.activeUsers}
 								</p>
-								<p className='text-sm text-slate-600 mt-1'>Active Users</p>
+								<p className='text-sm text-slate-600 mt-1'>
+									Faol foydalanuvchilar
+								</p>
 							</div>
+
 							<div className='text-center p-4 bg-slate-50 rounded-lg'>
 								<p className='text-2xl font-bold text-slate-900'>
 									{stats.activeDrivers}
 								</p>
-								<p className='text-sm text-slate-600 mt-1'>Online Drivers</p>
+								<p className='text-sm text-slate-600 mt-1'>
+									Onlayn haydovchilar
+								</p>
 							</div>
+
 							<div className='text-center p-4 bg-slate-50 rounded-lg'>
 								<p className='text-2xl font-bold text-green-600'>
 									SAR {(stats.totalRevenue / 1000).toFixed(1)}k
 								</p>
-								<p className='text-sm text-slate-600 mt-1'>Total Revenue</p>
+								<p className='text-sm text-slate-600 mt-1'>Umumiy daromad</p>
 							</div>
 						</div>
 					</CardContent>

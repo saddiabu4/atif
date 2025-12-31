@@ -33,13 +33,13 @@ export function AdminUsers() {
 	const handleBlock = async (userId) => {
 		await userAPI.block(userId)
 		await loadUsers()
-		showToast("User blocked successfully")
+		showToast("Foydalanuvchi bloklandi")
 	}
 
 	const handleUnblock = async (userId) => {
 		await userAPI.unblock(userId)
 		await loadUsers()
-		showToast("User unblocked successfully")
+		showToast("Foydalanuvchi blokdan chiqarildi")
 	}
 
 	const showToast = (message) => {
@@ -51,8 +51,9 @@ export function AdminUsers() {
 	if (loading) {
 		return (
 			<motion.div
-				animate={{ rotate: 360 }}
-				transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 0.2 }}
 				className='p-8 flex justify-center'
 			>
 				<Shield className='w-8 h-8 text-slate-400' />
@@ -70,30 +71,30 @@ export function AdminUsers() {
 				<CardHeader className='border-b border-slate-100'>
 					<CardTitle className='flex items-center gap-2'>
 						<Shield className='w-5 h-5 text-blue-600' />
-						All Users
+						Barcha Foydalanuvchilar
 					</CardTitle>
 				</CardHeader>
 				<CardContent className='pt-6'>
 					{users.length === 0 ? (
 						<div className='text-center py-8'>
-							<p className='text-slate-500'>No users found</p>
+							<p className='text-slate-500'>Foydalanuvchilar topilmadi</p>
 						</div>
 					) : (
 						<div className='overflow-x-auto'>
 							<Table>
 								<TableHeader>
 									<TableRow className='border-b border-slate-200 hover:bg-transparent'>
-										<TableHead className='text-slate-600'>Name</TableHead>
+										<TableHead className='text-slate-600'>Ism</TableHead>
 										<TableHead className='text-slate-600'>Email</TableHead>
-										<TableHead className='text-slate-600'>Phone</TableHead>
+										<TableHead className='text-slate-600'>Telefon</TableHead>
 										<TableHead className='text-slate-600 text-center'>
-											Trips
+											Safarlar
 										</TableHead>
 										<TableHead className='text-slate-600 text-center'>
-											Rating
+											Reyting
 										</TableHead>
-										<TableHead className='text-slate-600'>Status</TableHead>
-										<TableHead className='text-slate-600'>Actions</TableHead>
+										<TableHead className='text-slate-600'>Holat</TableHead>
+										<TableHead className='text-slate-600'>Amallar</TableHead>
 									</TableRow>
 								</TableHeader>
 								<TableBody>
@@ -143,7 +144,7 @@ export function AdminUsers() {
 														className='text-xs'
 														onClick={() => handleBlock(user.id)}
 													>
-														Block
+														Blok qilish
 													</Button>
 												) : (
 													<Button
@@ -151,7 +152,7 @@ export function AdminUsers() {
 														className='text-xs'
 														onClick={() => handleUnblock(user.id)}
 													>
-														Unblock
+														Blokdan chiqarish
 													</Button>
 												)}
 											</TableCell>

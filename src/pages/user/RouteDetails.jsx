@@ -176,7 +176,7 @@ export function RouteDetails({ routeId, onBack, onBooking }) {
 			{/* Seat Selection */}
 			<motion.div variants={itemVariants} className='mb-6'>
 				<div className='flex items-center justify-between mb-4'>
-					<h2 className='text-lg font-bold text-slate-900'>Select Seats</h2>
+					<h2 className='text-lg font-bold text-slate-900'>O'rinni Tanlang</h2>
 					<motion.div
 						className='text-xs font-semibold px-3 py-1 rounded-full'
 						animate={{
@@ -185,7 +185,7 @@ export function RouteDetails({ routeId, onBack, onBooking }) {
 							color: route.availableSeats <= 5 ? "#991b1b" : "#065f46",
 						}}
 					>
-						{route.availableSeats} available
+						{route.availableSeats} mavjud
 					</motion.div>
 				</div>
 
@@ -221,15 +221,15 @@ export function RouteDetails({ routeId, onBack, onBooking }) {
 					<div className='flex gap-4 justify-center text-xs'>
 						<div className='flex items-center gap-2'>
 							<div className='w-4 h-4 rounded bg-white border-2 border-slate-300' />
-							<span className='text-slate-600'>Available</span>
+							<span className='text-slate-600'>Mavjud</span>
 						</div>
 						<div className='flex items-center gap-2'>
 							<div className='w-4 h-4 rounded bg-blue-600 border-2 border-blue-700' />
-							<span className='text-slate-600'>Selected</span>
+							<span className='text-slate-600'>Tanlangan</span>
 						</div>
 						<div className='flex items-center gap-2'>
 							<div className='w-4 h-4 rounded bg-slate-200 border-2 border-slate-300' />
-							<span className='text-slate-600'>Booked</span>
+							<span className='text-slate-600'>Bronlangan</span>
 						</div>
 					</div>
 				</div>
@@ -242,10 +242,10 @@ export function RouteDetails({ routeId, onBack, onBooking }) {
 					>
 						<p className='text-sm text-blue-900'>
 							<span className='font-bold'>
-								{selectedSeats.length} seat
-								{selectedSeats.length !== 1 ? "s" : ""}
+								{selectedSeats.length} o'rn
+								{selectedSeats.length !== 1 ? "lar" : ""}
 							</span>{" "}
-							selected: {selectedSeats.sort((a, b) => a - b).join(", ")}
+							tanlangan: {selectedSeats.sort((a, b) => a - b).join(", ")}
 						</p>
 					</motion.div>
 				)}
@@ -268,8 +268,10 @@ export function RouteDetails({ routeId, onBack, onBooking }) {
 							whileTap={{ scale: 0.98 }}
 						>
 							<div className='text-left'>
-								<p className='text-xs text-blue-100'>Booking Total</p>
-								<p className='text-xl font-bold'>{totalPrice} SAR</p>
+								<p className='text-xs text-blue-100'>Bron Jami Miqdori</p>
+								<p className='text-xl font-bold'>
+									{totalPrice.toLocaleString("uz-UZ")} so'm
+								</p>
 							</div>
 							<div className='text-right'>
 								<ChevronLeft className='w-6 h-6 rotate-180' />

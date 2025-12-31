@@ -133,6 +133,7 @@ export function MyBookings() {
 										<div className='flex items-start gap-3 justify-between'>
 											{/* Status & Route */}
 											<div className='flex-1'>
+												{" "}
 												<motion.div
 													className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold mb-2 ${
 														isUpcoming

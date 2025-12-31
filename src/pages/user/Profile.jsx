@@ -179,7 +179,7 @@ export function UserProfile({ onLogout }) {
 							<MapPin className='w-5 h-5 text-purple-600' />
 						</div>
 						<div className='flex-1'>
-							<p className='text-xs text-slate-600 font-medium'>Location</p>
+							<p className='text-xs text-slate-600 font-medium'>Joylashuv</p>
 							<p className='font-semibold text-slate-900'>
 								{currentUser.location}
 							</p>
@@ -192,29 +192,29 @@ export function UserProfile({ onLogout }) {
 			<motion.div variants={itemVariants} className='mb-8'>
 				<h2 className='text-xl font-bold text-slate-900 mb-4 flex items-center gap-2'>
 					<Wallet className='w-5 h-5 text-emerald-600' />
-					Quick Actions
+					Tez Amallar
 				</h2>
 				<div className='space-y-2'>
 					{" "}
 					{[
 						{
 							icon: Download,
-							label: "Download E-Tickets",
+							label: "E-Chiptalarni Yuklab Olish",
 							color: "blue",
 						},
 						{
 							icon: CreditCard,
-							label: "Payment Methods",
+							label: "To'lov Usullari",
 							color: "emerald",
 						},
 						{
 							icon: Award,
-							label: "Loyalty Points",
+							label: "Sodiqlik Ballari",
 							color: "amber",
 						},
 						{
 							icon: MessageCircle,
-							label: "Support & Help",
+							label: "Yordam va Ma'lumot",
 							color: "indigo",
 						},
 					].map((action, idx) => (
@@ -266,14 +266,18 @@ export function UserProfile({ onLogout }) {
 			<motion.div variants={itemVariants} className='mb-8'>
 				<h2 className='text-xl font-bold text-slate-900 mb-4 flex items-center gap-2'>
 					<Award className='w-5 h-5 text-amber-500' />
-					Achievements
+					Yutuqlar
 				</h2>
 				<div className='grid grid-cols-2 gap-3'>
 					{[
-						{ icon: "🎯", label: "Road Warrior", desc: "50+ trips" },
-						{ icon: "⭐", label: "5-Star Rider", desc: "Perfect rating" },
-						{ icon: "🎉", label: "Early Bird", desc: "Joined early" },
-						{ icon: "💎", label: "Premium Plus", desc: "Upgraded tier" },
+						{ icon: "🎯", label: "Yo'l Jangari", desc: "50+ safar" },
+						{ icon: "⭐", label: "5 Yulduzli", desc: "Mukammal reyting" },
+						{ icon: "🎉", label: "Erta Keluvchi", desc: "Dastlabki ro'yxat" },
+						{
+							icon: "💎",
+							label: "Premium Plus",
+							desc: "Yuksaltirilgan turdagi",
+						},
 					].map((achievement, idx) => (
 						<motion.div
 							key={idx}

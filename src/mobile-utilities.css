@@ -2,19 +2,19 @@
 
 /* Safe area support for notched devices */
 .safe-area-top {
-	padding-top: max(env(safe-area-inset-top), 0);
+	padding-top: max(env(safe-area-inset-top), 0.5rem);
 }
 
 .safe-area-bottom {
-	padding-bottom: max(env(safe-area-inset-bottom), 0);
+	padding-bottom: max(env(safe-area-inset-bottom), 0.5rem);
 }
 
 .safe-area-left {
-	padding-left: max(env(safe-area-inset-left), 0);
+	padding-left: max(env(safe-area-inset-left), 0.5rem);
 }
 
 .safe-area-right {
-	padding-right: max(env(safe-area-inset-right), 0);
+	padding-right: max(env(safe-area-inset-right), 0.5rem);
 }
 
 /* Prevent horizontal scroll on mobile */
@@ -24,6 +24,65 @@ body {
 	max-width: 100%;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+/* Mobile viewport optimization */
+@media (max-width: 640px) {
+	html,
+	body {
+		font-size: 16px;
+		/* Prevent zoom on input focus */
+		-webkit-text-size-adjust: 100%;
+		text-size-adjust: 100%;
+	}
+
+	/* Touch-friendly button sizing */
+	button,
+	a,
+	input[type="button"],
+	input[type="submit"],
+	input[type="checkbox"],
+	input[type="radio"] {
+		min-height: 48px;
+		min-width: 48px;
+	}
+
+	/* Smooth scroll on mobile */
+	html {
+		scroll-behavior: smooth;
+		scroll-padding-top: 60px;
+	}
+
+	/* Optimize text rendering on mobile */
+	body {
+		line-height: 1.5;
+	}
+
+	/* Form inputs optimization */
+	input,
+	textarea,
+	select {
+		font-size: 16px; /* Prevents zoom on iOS */
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		border-radius: 8px;
+		padding: 12px;
+	}
+
+	/* Remove default iOS styling */
+	input[type="search"] {
+		-webkit-appearance: none;
+		appearance: none;
+	}
+
+	/* Prevent rubber band effect on iOS */
+	body {
+		overscroll-behavior: contain;
+	}
 }
 
 /* Desktop simulation frame (centered phone UI for desktops) */

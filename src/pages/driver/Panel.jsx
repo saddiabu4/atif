@@ -213,86 +213,108 @@ function DriverHome({ onShowToast }) {
 		return (
 			<MobileContent>
 				<MobileHeader
-					title={`${isOnline ? "Onlayn" : "Oflayn"}`}
+					title={`${isOnline ? "🟢 Onlayn" : "⚫ Oflayn"}`}
 					showBack={false}
 				/>
-				<div className='space-y-4'>
-					<Card className='border-0 shadow-sm bg-white'>
-						<CardContent className='pt-6'>
-							<div className='flex items-center justify-between'>
-								<div>
-									<h3 className='font-semibold text-slate-900'>
+				<div className='space-y-3 px-1'>
+					{/* Status Card */}
+					<Card className='border-0 shadow-md bg-white rounded-2xl overflow-hidden'>
+						<CardContent className='p-4'>
+							<div className='flex items-center justify-between gap-3'>
+								<div className='flex-1'>
+									<h3 className='text-base font-bold text-slate-900'>
 										{driver.name}
 									</h3>
-									<div className='flex items-center gap-1 mt-1'>
-										<span className='text-sm text-slate-600'>
+									<div className='flex items-center gap-2 mt-2'>
+										<span className='inline-flex items-center gap-1 bg-amber-100 text-amber-800 text-xs font-semibold px-2 py-1 rounded-full'>
 											⭐ {driver.rating}
 										</span>
-										<span className='text-sm text-slate-600'>
-											• {driver.totalTrips} safar
+										<span className='text-xs text-slate-500'>
+											{driver.totalTrips} safar
 										</span>
 									</div>
 								</div>
 								<button
 									onClick={() => handleToggleOnline(!isOnline)}
-									className={`px-4 py-2 rounded-lg font-medium transition-all ${
+									className={`px-5 py-3 rounded-xl font-semibold text-sm transition-all touch-target ${
 										isOnline
-											? "bg-green-500 text-white hover:bg-green-600 shadow-lg"
-											: "bg-slate-200 text-slate-700 hover:bg-slate-300"
+											? "bg-green-500 text-white hover:bg-green-600 shadow-lg active:scale-95"
+											: "bg-slate-300 text-slate-700 hover:bg-slate-400 active:scale-95"
 									}`}
 								>
-									{isOnline ? "Onlayn" : "Onlayn bo'lish"}
+									{isOnline ? "Onlayn ✓" : "Onlayn bo'lish"}
 								</button>
 							</div>
 						</CardContent>
 					</Card>
 
+					{/* New Trip Request Card */}
 					{newRequest && (
-						<Card className='border-l-4 border-l-blue-500 bg-blue-50 shadow-md'>
-							<CardContent className='pt-6'>
+						<Card className='border-0 shadow-2xl bg-linear-to-br from-blue-500 to-blue-600 text-white rounded-3xl overflow-hidden'>
+							<CardContent className='p-5 space-y-4'>
+								<div className='bg-white  text-black bg-opacity-20 rounded-2xl px-4 py-2.5 inline-block'>
+									<span className='text-sm font-bold tracking-wide'>
+										🚗 YANGI SAFAR!
+									</span>
+								</div>
 								<div className='space-y-3'>
-									<div className='flex items-center justify-between'>
-										<span className='font-semibold text-slate-900'>
-											Yangi safar so'rovi!
-										</span>
-										<span className='text-2xl font-bold text-green-600'>
-											{newRequest.estimatedFare.toLocaleString("uz-UZ")} so'm
-										</span>
-									</div>
-									<div className='space-y-2 text-sm'>
-										<div className='flex items-start gap-2'>
-											<MapPin className='w-4 h-4 mt-0.5 text-blue-600 shrink-0' />
-											<span className='text-slate-700'>
-												{newRequest.pickup}
-											</span>
+									<div className='flex items-start gap-4'>
+										<MapPin className='w-6 h-6 shrink-0 mt-0.5 opacity-90' />
+										<div className='flex-1 min-w-0'>
+											<p className='text-xs font-semibold opacity-80 mb-1'>
+												OLIB KETISH
+											</p>
+											<p className='font-bold text-sm'>{newRequest.pickup}</p>
 										</div>
-										<div className='flex items-start gap-2'>
-											<Navigation2 className='w-4 h-4 mt-0.5 text-blue-600 shrink-0' />
-											<span className='text-slate-700'>
+									</div>
+									<div className='h-8 w-0.5 bg-white text-black opacity-40 ml-3'></div>
+									<div className='flex items-start gap-4'>
+										<Navigation2 className='w-6 h-6 shrink-0 mt-0.5 opacity-90' />
+										<div className='flex-1 min-w-0'>
+											<p className='text-xs font-semibold opacity-80 mb-1'>
+												MANZILAGACHA
+											</p>
+											<p className='font-bold text-sm'>
 												{newRequest.destination}
-											</span>
-										</div>
-										<div className='flex items-center gap-2 text-slate-600'>
-											<span>{newRequest.distance} km</span>
-											<span>•</span>
-											<span>{newRequest.passenger.name}</span>
+											</p>
 										</div>
 									</div>
-									<div className='flex gap-2 pt-2'>
-										<Button
-											onClick={handleAcceptRequest}
-											className='flex-1 bg-green-500 hover:bg-green-600 text-white'
-										>
-											Qabul qilish
-										</Button>
-										<Button
-											onClick={handleDeclineRequest}
-											variant='outline'
-											className='flex-1'
-										>
-											Rad etish
-										</Button>
+								</div>
+
+								<div className='bg-white bg-opacity-20 rounded-2xl px-4 py-3 flex items-center gap-3 flex-wrap text-black'>
+									<div className='flex gap-4 text-sm font-semibold'>
+										<span>📍 {newRequest.distance} km</span>
+										<span>•</span>
+										<span>👤 {newRequest.passenger.name}</span>
 									</div>
+								</div>
+
+								<div className='bg-white bg-opacity-25 rounded-2xl px-4 py-4 text-center text-black'>
+									<p className='text-xs font-semibold opacity-90 mb-2'>
+										TAXMINAT NARXI
+									</p>
+									<p className='text-3xl font-black leading-tight'>
+										{newRequest.estimatedFare.toLocaleString("uz-UZ")} so'm
+									</p>
+									<p className='text-xs opacity-85 mt-2'>
+										⭐ {newRequest.passenger.rating}
+									</p>
+								</div>
+
+								<div className='flex gap-2.5 pt-2'>
+									<Button
+										onClick={handleAcceptRequest}
+										className='flex-1 bg-green-500 hover:bg-green-600 text-white font-bold text-base h-12 rounded-xl active:scale-95 shadow-lg transition-all'
+									>
+										✓ Qabul qilish
+									</Button>
+									<Button
+										onClick={handleDeclineRequest}
+										variant='outline'
+										className='flex-1 bg-white bg-opacity-20 text-white border border-white border-opacity-30 font-bold text-base h-12 rounded-xl active:scale-95 hover:bg-opacity-30 transition-all'
+									>
+										✕ Rad etish
+									</Button>
 								</div>
 							</CardContent>
 						</Card>
@@ -354,72 +376,69 @@ function DriverHome({ onShowToast }) {
 			</div>
 
 			<DriverPanelGrid cols='3' className='mb-6 lg:mb-8'>
-				{/* Main Request Card */}
+				{/* Main Request Card - Unified Design */}
 				{newRequest && (
 					<DriverPanelSection span='2'>
-						{" "}
-						<Card className='border-l-4 border-l-blue-600 shadow-lg'>
-							<CardHeader className='bg-linear-to-r from-blue-50 to-transparent pb-3'>
-								<div className='flex items-center justify-between'>
-									<CardTitle className='text-xl text-blue-900'>
-										🚗 Yangi safar so'rovi!
-									</CardTitle>
-									<span className='text-3xl font-bold text-green-600'>
+						<Card className='border-0 shadow-lg bg-linear-to-br from-blue-500 to-blue-600 text-white rounded-2xl overflow-hidden'>
+							<CardContent className='p-6 space-y-4'>
+								<div className='bg-white bg-opacity-20 rounded-xl px-4 py-2.5 inline-block'>
+									<span className='text-sm font-bold'>🚗 YANGI SAFAR!</span>
+								</div>
+								<div className='space-y-3'>
+									<div className='flex items-start gap-4'>
+										<MapPin className='w-6 h-6 shrink-0 mt-0.5 opacity-90' />
+										<div className='flex-1'>
+											<p className='text-xs font-semibold opacity-80 mb-1'>
+												OLIB KETISH
+											</p>
+											<p className='font-bold text-base'>{newRequest.pickup}</p>
+										</div>
+									</div>
+									<div className='h-8 w-0.5 bg-white opacity-40 ml-3'></div>
+									<div className='flex items-start gap-4'>
+										<Navigation2 className='w-6 h-6 shrink-0 mt-0.5 opacity-90' />
+										<div className='flex-1'>
+											<p className='text-xs font-semibold opacity-80 mb-1'>
+												MANZILAGACHA
+											</p>
+											<p className='font-bold text-base'>
+												{newRequest.destination}
+											</p>
+										</div>
+									</div>
+								</div>
+
+								<div className='bg-white bg-opacity-20 rounded-xl px-4 py-3 flex items-center justify-between'>
+									<div className='flex gap-4 text-sm font-semibold'>
+										<span>📍 {newRequest.distance} km</span>
+										<span>•</span>
+										<span>👤 {newRequest.passenger.name}</span>
+									</div>
+								</div>
+
+								<div className='bg-white bg-opacity-25 rounded-xl px-4 py-4 text-center'>
+									<p className='text-xs font-semibold opacity-90 mb-1'>
+										TAXMINAT NARXI
+									</p>
+									<p className='text-3xl font-black'>
 										{newRequest.estimatedFare.toLocaleString("uz-UZ")} so'm
-									</span>
+									</p>
+									<p className='text-xs opacity-80 mt-1'>
+										⭐ {newRequest.passenger.rating}
+									</p>
 								</div>
-							</CardHeader>
-							<CardContent className='space-y-4'>
-								<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-									<div className='space-y-3'>
-										<div className='flex items-start gap-3'>
-											<MapPin className='w-5 h-5 mt-1 text-blue-600 shrink-0' />
-											<div>
-												<p className='text-xs font-medium text-slate-600'>
-													OLIB KETISH
-												</p>
-												<p className='text-sm font-semibold text-slate-900 mt-1'>
-													{newRequest.pickup}
-												</p>
-											</div>
-										</div>
-										<div className='flex items-start gap-3'>
-											<Navigation2 className='w-5 h-5 mt-1 text-blue-600 shrink-0' />
-											<div>
-												<p className='text-xs font-medium text-slate-600'>
-													MANZILAGACHA
-												</p>
-												<p className='text-sm font-semibold text-slate-900 mt-1'>
-													{newRequest.destination}
-												</p>
-											</div>
-										</div>
-									</div>
-									<div className='space-y-3 flex flex-col justify-between'>
-										<div>
-											<p className='text-sm text-slate-600'>
-												{newRequest.passenger.name}
-											</p>
-											<p className='text-sm font-semibold text-slate-900'>
-												⭐ {newRequest.passenger.rating}
-											</p>
-											<p className='text-xs text-slate-600 mt-2'>
-												📍 {newRequest.distance} km
-											</p>
-										</div>
-									</div>
-								</div>
-								<div className='flex gap-3 pt-4 border-t'>
+
+								<div className='flex gap-3 pt-2'>
 									<Button
 										onClick={handleAcceptRequest}
-										className='flex-1 bg-green-600 hover:bg-green-700 text-white text-base h-12 rounded-lg font-semibold'
+										className='flex-1 bg-green-500 hover:bg-green-600 text-white font-bold text-base h-12 rounded-xl active:scale-95 shadow-lg'
 									>
 										✓ Qabul qilish
 									</Button>
 									<Button
 										onClick={handleDeclineRequest}
 										variant='outline'
-										className='flex-1 text-base h-12 rounded-lg font-semibold'
+										className='flex-1 bg-white bg-opacity-20 text-white border-white border-opacity-30 font-bold text-base h-12 rounded-xl active:scale-95 hover:bg-opacity-30'
 									>
 										✕ Rad etish
 									</Button>

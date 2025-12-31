@@ -83,7 +83,7 @@ export function AdminPanel() {
 						className='w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-slate-100 transition-all duration-200'
 					>
 						<LogOut className='w-5 h-5' />
-						<span>Chiqish</span>
+						<span>Logout</span>
 					</button>
 				</div>
 			</Sidebar>
@@ -92,7 +92,7 @@ export function AdminPanel() {
 			<div className='flex-1 flex flex-col overflow-hidden'>
 				<Header
 					title={navItems.find((n) => n.id === activeTab)?.label || "Dashboard"}
-					subtitle='Transportasyon platformasi'
+					subtitle='Manage your transportation platform'
 				/>
 
 				<MainContent>

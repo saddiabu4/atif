@@ -291,7 +291,7 @@ function DriverOrders({ onShowToast }) {
 
 	return (
 		<MobileContent>
-			<MobileHeader title='Active Orders' showBack={false} />
+			<MobileHeader title='Faol buyurtmalar' showBack={false} />
 			{orders.length > 0 ? (
 				<div className='space-y-3'>
 					{orders.map((order) => (
@@ -320,7 +320,7 @@ function DriverOrders({ onShowToast }) {
 									</div>
 									<div className='flex items-center gap-2 text-sm text-gray-600'>
 										<Clock className='w-4 h-4' />
-										<span>{order.estimatedTime} away</span>
+										<span>{order.estimatedTime} vaqtda</span>
 									</div>
 								</div>
 
@@ -331,7 +331,7 @@ function DriverOrders({ onShowToast }) {
 										size='sm'
 									>
 										<Navigation2 className='w-4 h-4 mr-1' />
-										Navigate
+										Navigation
 									</Button>
 									<Button
 										onClick={() => handleCall(order.passenger.name)}
@@ -340,7 +340,7 @@ function DriverOrders({ onShowToast }) {
 										className='flex-1'
 									>
 										<Phone className='w-4 h-4 mr-1' />
-										Call
+										Qo'ng'iroq qiling
 									</Button>
 								</div>
 							</CardContent>
@@ -350,7 +350,7 @@ function DriverOrders({ onShowToast }) {
 			) : (
 				<div className='flex flex-col items-center justify-center py-12 text-center'>
 					<Navigation className='w-12 h-12 text-gray-300 mb-3' />
-					<p className='text-gray-600'>No active orders</p>
+					<p className='text-gray-600'>Faol buyurtmalar yo'q</p>
 				</div>
 			)}
 		</MobileContent>
@@ -392,37 +392,37 @@ function DriverEarnings({ onShowToast }) {
 
 	return (
 		<MobileContent>
-			<MobileHeader title='Earnings' showBack={false} />
+			<MobileHeader title='Daromad' showBack={false} />
 			<div className='space-y-4'>
 				<div className='grid grid-cols-2 gap-3'>
 					<Card className='border-0 shadow-sm bg-linear-to-br from-green-400 to-green-600 text-white'>
 						<CardContent className='pt-6'>
-							<p className='text-sm font-medium opacity-90'>Today</p>
+							<p className='text-sm font-medium opacity-90'>Bugun</p>
 							<p className='text-2xl font-bold mt-2'>
-								SAR {earningsData.today}
+								{earningsData.today.toLocaleString("uz-UZ")} so'm
 							</p>
 						</CardContent>
 					</Card>
 					<Card className='border-0 shadow-sm bg-linear-to-br from-blue-400 to-blue-600 text-white'>
 						<CardContent className='pt-6'>
-							<p className='text-sm font-medium opacity-90'>This Week</p>
+							<p className='text-sm font-medium opacity-90'>Bu hafta</p>
 							<p className='text-2xl font-bold mt-2'>
-								SAR {earningsData.thisWeek}
+								{earningsData.thisWeek.toLocaleString("uz-UZ")} so'm
 							</p>
 						</CardContent>
 					</Card>
 					<Card className='border-0 shadow-sm bg-linear-to-br from-purple-400 to-purple-600 text-white col-span-2'>
 						<CardContent className='pt-6'>
-							<p className='text-sm font-medium opacity-90'>This Month</p>
+							<p className='text-sm font-medium opacity-90'>Bu oy</p>
 							<p className='text-2xl font-bold mt-2'>
-								SAR {earningsData.thisMonth}
+								{earningsData.thisMonth.toLocaleString("uz-UZ")} so'm
 							</p>
 						</CardContent>
 					</Card>
 				</div>
 
 				<div>
-					<h3 className='font-semibold text-gray-900 mb-3'>Recent Trips</h3>
+					<h3 className='font-semibold text-gray-900 mb-3'>So'nggi safarlar</h3>
 					<div className='space-y-2'>
 						{earningsData.recentTrips.map((trip) => (
 							<Card key={trip.id} className='border-0 shadow-sm'>
@@ -441,7 +441,7 @@ function DriverEarnings({ onShowToast }) {
 										</div>
 										<div className='text-right shrink-0'>
 											<p className='font-bold text-green-600'>
-												SAR {trip.fare}
+												{trip.fare.toLocaleString("uz-UZ")} so'm
 											</p>
 										</div>
 									</div>
@@ -478,15 +478,15 @@ function DriverProfile({ onShowToast }) {
 	const handleLogout = async () => {
 		try {
 			await driverAPI.logout(CURRENT_DRIVER_ID)
-			onShowToast("Logged out successfully", "success")
+			onShowToast("Muvaffaqiyatli chiqildi", "success")
 		} catch (error) {
-			onShowToast("Logout failed", "error")
+			onShowToast("Chiqishda xatolik", "error")
 		}
 	}
 
 	return (
 		<MobileContent>
-			<MobileHeader title='Profile' showBack={false} />
+			<MobileHeader title='Profil' showBack={false} />
 			<div className='space-y-4'>
 				<Card className='border-0 shadow-sm'>
 					<CardContent className='pt-6'>
@@ -501,10 +501,10 @@ function DriverProfile({ onShowToast }) {
 									{driver.name}
 								</h2>
 								<p className='text-sm text-gray-600'>
-									⭐ {driver.rating} • {driver.totalTrips} trips
+									⭐ {driver.rating} • {driver.totalTrips} safar
 								</p>
 								<p className='text-xs text-gray-500 mt-1'>
-									Joined {driver.joinDate}
+									Qo'shildi {driver.joinDate}
 								</p>
 							</div>
 						</div>
@@ -513,12 +513,12 @@ function DriverProfile({ onShowToast }) {
 
 				<Card className='border-0 shadow-sm'>
 					<CardHeader className='pb-3'>
-						<CardTitle className='text-base'>Contact Information</CardTitle>
+						<CardTitle className='text-base'>Aloqa ma'lumotlari</CardTitle>
 					</CardHeader>
 					<CardContent className='space-y-3'>
 						<div>
 							<p className='text-xs font-medium text-gray-600 uppercase'>
-								Phone
+								Telefon
 							</p>
 							<p className='text-gray-900'>{driver.phone}</p>
 						</div>
@@ -533,7 +533,7 @@ function DriverProfile({ onShowToast }) {
 
 				<Card className='border-0 shadow-sm'>
 					<CardHeader className='pb-3'>
-						<CardTitle className='text-base'>Vehicle Details</CardTitle>
+						<CardTitle className='text-base'>Transport ma'lumoti</CardTitle>
 					</CardHeader>
 					<CardContent className='space-y-3'>
 						<div>
@@ -544,13 +544,13 @@ function DriverProfile({ onShowToast }) {
 						</div>
 						<div>
 							<p className='text-xs font-medium text-gray-600 uppercase'>
-								Color
+								Rangi
 							</p>
 							<p className='text-gray-900'>{driver.vehicle.color}</p>
 						</div>
 						<div>
 							<p className='text-xs font-medium text-gray-600 uppercase'>
-								Plate
+								Raqami
 							</p>
 							<p className='text-gray-900'>{driver.vehicle.plate}</p>
 						</div>
@@ -559,20 +559,27 @@ function DriverProfile({ onShowToast }) {
 
 				<Card className='border-0 shadow-sm'>
 					<CardHeader className='pb-3'>
-						<CardTitle className='text-base'>Documents</CardTitle>
+						<CardTitle className='text-base'>Hujjatlar</CardTitle>
 					</CardHeader>
 					<CardContent className='space-y-2'>
-						{Object.entries(driver.documents).map(([doc, status]) => (
-							<div
-								key={doc}
-								className='flex items-center justify-between py-2 border-b last:border-0'
-							>
-								<p className='text-sm font-medium capitalize'>
-									{doc.replace(/([A-Z])/g, " $1").trim()}
-								</p>
-								<StatusBadge status={status} />
-							</div>
-						))}
+						{Object.entries(driver.documents).map(([doc, status]) => {
+							const docLabels = {
+								drivingLicense: 'Haydovchi guvohnomasi',
+								insuranceCertificate: 'Sug\'urta sertifikati',
+								carRegistration: 'Avtomobil roʻyxati'
+							}
+							return (
+								<div
+									key={doc}
+									className='flex items-center justify-between py-2 border-b last:border-0'
+								>
+									<p className='text-sm font-medium'>
+										{docLabels[doc] || doc}
+									</p>
+									<StatusBadge status={status} />
+								</div>
+							)
+						})}
 					</CardContent>
 				</Card>
 
@@ -581,7 +588,7 @@ function DriverProfile({ onShowToast }) {
 					variant='outline'
 					className='w-full text-red-600 border-red-300 hover:bg-red-50 mt-6'
 				>
-					Logout
+					Chiqish
 				</Button>
 			</div>
 		</MobileContent>

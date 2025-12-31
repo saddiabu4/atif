@@ -1,0 +1,124 @@
+{
+	"drivers": [
+		{
+			"id": "driver_1",
+			"name": "Saleh Al-Otaibi",
+			"email": "saleh@example.com",
+			"phone": "+966 50 111 2222",
+			"avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=saleh",
+			"status": "online",
+			"verificationStatus": "verified",
+			"joinedDate": "2024-01-10",
+			"totalTrips": 245,
+			"rating": 4.9,
+			"vehicle": {
+				"type": "sedan",
+				"model": "Toyota Camry 2023",
+				"licensePlate": "KSA 1234",
+				"color": "Silver"
+			},
+			"documents": {
+				"license": "verified",
+				"insurance": "verified",
+				"registration": "verified"
+			},
+			"earnings": {
+				"today": 450,
+				"thisMonth": 8250,
+				"total": 18500
+			},
+			"averageRating": 4.9,
+			"reviewsCount": 187
+		},
+		{
+			"id": "driver_2",
+			"name": "Khalid Hassan",
+			"email": "khalid@example.com",
+			"phone": "+966 50 222 3333",
+			"avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=khalid",
+			"status": "offline",
+			"verificationStatus": "verified",
+			"joinedDate": "2024-02-15",
+			"totalTrips": 198,
+			"rating": 4.7,
+			"vehicle": {
+				"type": "suv",
+				"model": "Hyundai Santa Fe 2023",
+				"licensePlate": "KSA 5678",
+				"color": "Black"
+			},
+			"documents": {
+				"license": "verified",
+				"insurance": "verified",
+				"registration": "verified"
+			},
+			"earnings": {
+				"today": 0,
+				"thisMonth": 7800,
+				"total": 15300
+			},
+			"averageRating": 4.7,
+			"reviewsCount": 156
+		},
+		{
+			"id": "driver_3",
+			"name": "Omar Al-Shehri",
+			"email": "omar@example.com",
+			"phone": "+966 50 333 4444",
+			"avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=omar",
+			"status": "online",
+			"verificationStatus": "pending",
+			"joinedDate": "2024-10-20",
+			"totalTrips": 23,
+			"rating": 4.5,
+			"vehicle": {
+				"type": "sedan",
+				"model": "Nissan Altima 2022",
+				"licensePlate": "KSA 9012",
+				"color": "White"
+			},
+			"documents": {
+				"license": "pending",
+				"insurance": "verified",
+				"registration": "pending"
+			},
+			"earnings": {
+				"today": 280,
+				"thisMonth": 2100,
+				"total": 2100
+			},
+			"averageRating": 4.5,
+			"reviewsCount": 18
+		},
+		{
+			"id": "driver_4",
+			"name": "Faisal Al-Dossary",
+			"email": "faisal@example.com",
+			"phone": "+966 50 444 5555",
+			"avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=faisal",
+			"status": "offline",
+			"verificationStatus": "verified",
+			"joinedDate": "2024-03-12",
+			"totalTrips": 312,
+			"rating": 4.8,
+			"vehicle": {
+				"type": "suv",
+				"model": "Chevrolet Tahoe 2023",
+				"licensePlate": "KSA 3456",
+				"color": "Dark Gray"
+			},
+			"documents": {
+				"license": "verified",
+				"insurance": "verified",
+				"registration": "verified"
+			},
+			"earnings": {
+				"today": 0,
+				"thisMonth": 9100,
+				"total": 22400
+			},
+			"averageRating": 4.8,
+			"reviewsCount": 267
+		}
+	]
+}

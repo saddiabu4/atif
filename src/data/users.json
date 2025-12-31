@@ -1,0 +1,56 @@
+{
+	"users": [
+		{
+			"id": "user_1",
+			"name": "Ahmed Hassan",
+			"email": "ahmed@example.com",
+			"phone": "+966 50 123 4567",
+			"avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=ahmed",
+			"status": "active",
+			"joinedDate": "2024-01-15",
+			"totalTrips": 45,
+			"rating": 4.8,
+			"paymentMethod": "Visa",
+			"lastTrip": "2025-12-30"
+		},
+		{
+			"id": "user_2",
+			"name": "Fatima Al-Rashid",
+			"email": "fatima@example.com",
+			"phone": "+966 50 234 5678",
+			"avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=fatima",
+			"status": "active",
+			"joinedDate": "2024-03-20",
+			"totalTrips": 32,
+			"rating": 4.9,
+			"paymentMethod": "Apple Pay",
+			"lastTrip": "2025-12-29"
+		},
+		{
+			"id": "user_3",
+			"name": "Mohammed Ali",
+			"email": "mohammed@example.com",
+			"phone": "+966 50 345 6789",
+			"avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=mohammed",
+			"status": "blocked",
+			"joinedDate": "2024-05-10",
+			"totalTrips": 78,
+			"rating": 3.2,
+			"paymentMethod": "Credit Card",
+			"lastTrip": "2025-12-25"
+		},
+		{
+			"id": "user_4",
+			"name": "Noor AlAyed",
+			"email": "noor@example.com",
+			"phone": "+966 50 456 7890",
+			"avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=noor",
+			"status": "active",
+			"joinedDate": "2024-06-05",
+			"totalTrips": 18,
+			"rating": 4.7,
+			"paymentMethod": "Debit Card",
+			"lastTrip": "2025-12-30"
+		}
+	]
+}

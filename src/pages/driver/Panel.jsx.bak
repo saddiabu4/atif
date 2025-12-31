@@ -1,0 +1,469 @@
+import {
+	BottomNav,
+	LoadingSpinner,
+	MobileContainer,
+	MobileContent,
+	MobileHeader,
+	ToastContainer,
+} from "@/components/mobile"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { orderAPI } from "@/lib/api"
+import { ArrowRight, MapPin, Phone, Search } from "lucide-react"
+import { useState } from "react"
+
+const CURRENT_USER_ID = "user_1"
+
+const navItems = [
+	{
+		id: "home",
+		label: "Home",
+		icon: ({ className }) => <Search className={className} />,
+	},
+	{
+		id: "trips",
+		label: "Trips",
+		icon: ({ className }) => <ArrowRight className={className} />,
+	},
+	{
+		id: "wallet",
+		label: "Wallet",
+		icon: ({ className }) => <MapPin className={className} />,
+	},
+	{
+		id: "profile",
+		label: "Profile",
+		icon: ({ className }) => <Phone className={className} />,
+	},
+]
+
+export function UserPanel() {
+	const [activeTab, setActiveTab] = useState("home")
+	const [toasts, setToasts] = useState([])
+
+	const showToast = (message, type = "success") => {
+		const id = Date.now()
+		setToasts((prev) => [...prev, { id, message, type }])
+	}
+
+	const removeToast = (id) => {
+		setToasts((prev) => prev.filter((t) => t.id !== id))
+	}
+
+	return (
+		<MobileContainer>
+			{activeTab === "home" && <UserHome onShowToast={showToast} />}
+			{activeTab === "trips" && <UserTrips onShowToast={showToast} />}
+			{activeTab === "wallet" && <UserWallet onShowToast={showToast} />}
+			{activeTab === "profile" && <UserProfile onShowToast={showToast} />}
+
+			<BottomNav
+				items={navItems}
+				activeItem={activeTab}
+				onItemClick={setActiveTab}
+			/>
+
+			<ToastContainer toasts={toasts} onRemoveToast={removeToast} />
+		</MobileContainer>
+	)
+}
+
+function UserHome({ onShowToast }) {
+	const [pickup, setPickup] = useState("")
+	const [destination, setDestination] = useState("")
+	const [estimatedPrice, setEstimatedPrice] = useState(null)
+	const [loading, setLoading] = useState(false)
+	const [orderCreated, setOrderCreated] = useState(null)
+	const [tripStatus, setTripStatus] = useState(null)
+
+	const estimatePrice = async () => {
+		if (!pickup || !destination) {
+			onShowToast("Please enter both pickup and destination", "error")
+			return
+		}
+
+		setLoading(true)
+		const basePrice = 10
+		const pricePerKm = 2.5
+		const estimatedDistance = Math.random() * 30 + 5
+		const estimated = basePrice + estimatedDistance * pricePerKm
+
+		await new Promise((r) => setTimeout(r, 500))
+		setEstimatedPrice({
+			distance: estimatedDistance,
+			fare: estimated,
+			duration: Math.ceil((estimatedDistance / 60) * 45) + " mins",
+		})
+		setLoading(false)
+	}
+
+	const handleBookRide = async () => {
+		if (!estimatedPrice) return
+
+		setLoading(true)
+		const order = await orderAPI.create({
+			userId: CURRENT_USER_ID,
+			pickup: { address: pickup, lat: 24.7136, lng: 46.6753 },
+			destination: { address: destination, lat: 21.5433, lng: 39.1728 },
+			distance: estimatedPrice.distance,
+			duration: estimatedPrice.duration,
+			fare: estimatedPrice.fare,
+			commission: estimatedPrice.fare * 0.15,
+		})
+
+		setOrderCreated(order)
+		setTripStatus("searching")
+		onShowToast("Booking confirmed! Finding the best driver...")
+
+		setTimeout(async () => {
+			await orderAPI.assignDriver(order.id, "driver_2")
+			await orderAPI.updateStatus(order.id, "active")
+			setOrderCreated((prev) => ({
+				...prev,
+				status: "active",
+				driverId: "driver_2",
+			}))
+			setTripStatus("found")
+			onShowToast("Driver found! Mohammed is on the way...")
+		}, 2500)
+
+		setLoading(false)
+	}
+
+	if (orderCreated && tripStatus) {
+		return (
+			<>
+				<MobileHeader
+					title={tripStatus === "found" ? "Driver Assigned" : "Ride Booked"}
+					subtitle={
+						tripStatus === "found"
+							? "Your driver is on the way..."
+							: "Finding the best driver for you..."
+					}
+				/>
+				<MobileContent>
+					<div className='space-y-4'>
+						{tripStatus === "searching" && (
+							<LoadingSpinner message='Finding driver...' />
+						)}
+
+						{tripStatus === "found" && (
+							<Card className='border-2 border-green-200'>
+								<CardContent className='pt-6'>
+									<div className='text-center'>
+										<img
+											src='https://api.dicebear.com/7.x/avataaars/svg?seed=driver_2'
+											alt='Driver'
+											className='w-16 h-16 rounded-full mx-auto mb-4'
+										/>
+										<h3 className='text-lg font-bold'>Mohammed Ali</h3>
+										<p className='text-sm text-gray-600 mt-1'>
+											⭐ 4.9 (245 trips)
+										</p>
+										<p className='text-sm text-gray-600 mt-3'>
+											Toyota Camry • Silver
+										</p>
+										<p className='text-lg font-bold text-blue-600 mt-2'>
+											KSA 1234
+										</p>
+										<Button
+											className='w-full mt-6 h-12 bg-green-600 hover:bg-green-700'
+											onClick={() => onShowToast("Calling driver...")}
+										>
+											<Phone className='w-5 h-5 mr-2' />
+											Call Driver
+										</Button>
+										<Button
+											variant='outline'
+											className='w-full mt-3'
+											onClick={() => {
+												setOrderCreated(null)
+												setTripStatus(null)
+											}}
+										>
+											Cancel Trip
+										</Button>
+									</div>
+								</CardContent>
+							</Card>
+						)}
+					</div>
+				</MobileContent>
+			</>
+		)
+	}
+
+	return (
+		<>
+			<MobileHeader title='Book Your Ride' subtitle='Quick and affordable' />
+			<MobileContent>
+				<div className='space-y-4'>
+					<div>
+						<label className='block text-sm font-semibold text-gray-900 mb-2'>
+							Pickup Location
+						</label>
+						<Input
+							placeholder='Enter pickup location'
+							value={pickup}
+							onChange={(e) => setPickup(e.target.value)}
+							icon={MapPin}
+							className='h-12'
+						/>
+					</div>
+
+					<div>
+						<label className='block text-sm font-semibold text-gray-900 mb-2'>
+							Destination
+						</label>
+						<Input
+							placeholder='Where are you going?'
+							value={destination}
+							onChange={(e) => setDestination(e.target.value)}
+							icon={MapPin}
+							className='h-12'
+						/>
+					</div>
+
+					<Button
+						onClick={estimatePrice}
+						loading={loading}
+						className='w-full h-12 bg-blue-600 hover:bg-blue-700 text-white font-semibold'
+					>
+						Get Price Estimate
+					</Button>
+
+					{estimatedPrice && (
+						<Card className='border-2 border-blue-100 bg-blue-50'>
+							<CardContent className='pt-6'>
+								<div className='space-y-3'>
+									<div className='flex justify-between items-center'>
+										<span className='text-gray-600'>Distance</span>
+										<span className='font-bold'>
+											{estimatedPrice.distance.toFixed(1)} km
+										</span>
+									</div>
+									<div className='flex justify-between items-center'>
+										<span className='text-gray-600'>Duration</span>
+										<span className='font-bold'>{estimatedPrice.duration}</span>
+									</div>
+									<div className='border-t border-blue-200 pt-3 flex justify-between items-center'>
+										<span className='text-lg font-bold'>Total Fare</span>
+										<span className='text-2xl font-bold text-blue-600'>
+											SAR {estimatedPrice.fare.toFixed(2)}
+										</span>
+									</div>
+								</div>
+
+								<Button
+									onClick={handleBookRide}
+									loading={loading}
+									className='w-full h-12 mt-4 bg-green-600 hover:bg-green-700 text-white font-semibold'
+								>
+									Book Ride Now
+								</Button>
+							</CardContent>
+						</Card>
+					)}
+				</div>
+			</MobileContent>
+		</>
+	)
+}
+
+function UserTrips({ onShowToast }) {
+	const [trips, setTrips] = useState([
+		{
+			id: "order_1",
+			pickup: { address: "Al Noor Tower, Riyadh" },
+			destination: { address: "King Fahd Road, Jeddah" },
+			duration: "52 min",
+			fare: 125.5,
+			status: "completed",
+			createdAt: "2025-12-30T08:30:00Z",
+			driverId: "driver_1",
+		},
+		{
+			id: "order_2",
+			pickup: { address: "Olaya Street, Riyadh" },
+			destination: { address: "KAEC, King Abdullah" },
+			duration: "38 min",
+			fare: 89.75,
+			status: "completed",
+			createdAt: "2025-12-29T10:15:00Z",
+			driverId: "driver_2",
+		},
+	])
+
+	const driverNames = {
+		driver_1: { name: "Saleh Al-Otaibi", rating: 4.9 },
+		driver_2: { name: "Mohammed Ali", rating: 4.8 },
+	}
+
+	return (
+		<>
+			<MobileHeader title='Trip History' subtitle='Your recent rides' />
+			<MobileContent>
+				<div className='space-y-3'>
+					{trips.map((trip) => (
+						<div
+							key={trip.id}
+							className='bg-white border border-gray-200 rounded-lg p-4 cursor-pointer hover:shadow-md transition-shadow'
+							onClick={() => onShowToast("Trip details: " + trip.id)}
+						>
+							<div className='flex items-start justify-between mb-3'>
+								<span className='text-xs font-semibold px-2 py-1 rounded-full bg-green-100 text-green-800'>
+									{trip.status}
+								</span>
+								<span className='text-sm text-gray-600'>
+									{new Date(trip.createdAt).toLocaleDateString()}
+								</span>
+							</div>
+
+							<div className='space-y-2 mb-3'>
+								<p className='text-sm text-gray-600'>
+									📍 {trip.pickup.address}
+								</p>
+								<p className='text-sm text-gray-600'>
+									📍 {trip.destination.address}
+								</p>
+							</div>
+
+							<div className='flex justify-between pt-3 border-t border-gray-100'>
+								<span className='text-sm text-gray-600'>{trip.duration}</span>
+								<span className='font-bold text-gray-900'>
+									SAR {trip.fare.toFixed(2)}
+								</span>
+							</div>
+						</div>
+					))}
+				</div>
+			</MobileContent>
+		</>
+	)
+}
+
+function UserWallet({ onShowToast }) {
+	const [balance] = useState(250.75)
+	const [transactions] = useState([
+		{
+			id: 1,
+			desc: "Trip to King Fahd Road",
+			amount: -125.5,
+			date: "2025-12-30",
+		},
+		{ id: 2, desc: "Wallet Topup", amount: 200, date: "2025-12-28" },
+		{
+			id: 3,
+			desc: "Referral Bonus",
+			amount: 50,
+			date: "2025-12-25",
+		},
+		{ id: 4, desc: "Trip to KAEC", amount: -89.75, date: "2025-12-29" },
+	])
+
+	return (
+		<>
+			<MobileHeader title='Wallet' subtitle='Your balance and history' />
+			<MobileContent>
+				<Card className='bg-linear-to-br from-blue-600 to-blue-800 text-white border-0 mb-6'>
+					<CardContent className='pt-8 pb-8'>
+						<p className='text-sm opacity-90'>Total Balance</p>
+						<p className='text-4xl font-bold mt-2'>SAR {balance.toFixed(2)}</p>
+						<Button
+							className='w-full h-11 bg-white text-blue-600 hover:bg-gray-100 font-semibold mt-6'
+							onClick={() => onShowToast("Topup feature coming soon")}
+						>
+							Add Money
+						</Button>
+					</CardContent>
+				</Card>
+
+				<h3 className='font-bold text-gray-900 mb-3'>Recent Transactions</h3>
+				<div className='space-y-2'>
+					{transactions.map((tx) => (
+						<div
+							key={tx.id}
+							className='flex items-center justify-between p-3 bg-gray-50 rounded-lg'
+						>
+							<div>
+								<p className='text-sm font-medium text-gray-900'>{tx.desc}</p>
+								<p className='text-xs text-gray-600'>{tx.date}</p>
+							</div>
+							<p
+								className={`font-bold ${
+									tx.amount > 0 ? "text-green-600" : "text-gray-900"
+								}`}
+							>
+								{tx.amount > 0 ? "+" : ""}
+								{tx.amount.toFixed(2)} SAR
+							</p>
+						</div>
+					))}
+				</div>
+			</MobileContent>
+		</>
+	)
+}
+
+function UserProfile({ onShowToast }) {
+	const [user] = useState({
+		name: "Ahmed Hassan",
+		email: "ahmed@example.com",
+		phone: "+966 50 123 4567",
+		avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=ahmed",
+		totalTrips: 45,
+		rating: 4.8,
+	})
+
+	return (
+		<>
+			<MobileHeader title='Profile' subtitle='Your information' />
+			<MobileContent>
+				<div className='text-center mb-8'>
+					<img
+						src={user.avatar}
+						alt={user.name}
+						className='w-24 h-24 rounded-full mx-auto mb-4'
+					/>
+					<h2 className='text-2xl font-bold text-gray-900'>{user.name}</h2>
+					<p className='text-gray-600 mt-1'>
+						⭐ {user.rating} • {user.totalTrips} trips
+					</p>
+				</div>
+
+				<div className='space-y-3 mb-6'>
+					<div className='p-4 bg-gray-50 rounded-lg'>
+						<p className='text-xs text-gray-600'>Email</p>
+						<p className='text-sm font-medium text-gray-900 mt-1'>
+							{user.email}
+						</p>
+					</div>
+					<div className='p-4 bg-gray-50 rounded-lg'>
+						<p className='text-xs text-gray-600'>Phone</p>
+						<p className='text-sm font-medium text-gray-900 mt-1'>
+							{user.phone}
+						</p>
+					</div>
+				</div>
+
+				<div className='space-y-2'>
+					<Button
+						variant='outline'
+						className='w-full h-11'
+						onClick={() => onShowToast("Edit profile coming soon")}
+					>
+						Edit Profile
+					</Button>
+					<Button
+						variant='outline'
+						className='w-full h-11'
+						onClick={() => onShowToast("Logged out successfully", "success")}
+					>
+						Logout
+					</Button>
+				</div>
+			</MobileContent>
+		</>
+	)
+}

@@ -1,0 +1,114 @@
+{
+	"routes": [
+		{
+			"id": "route_1",
+			"origin": "Riyadh Center",
+			"destination": "Jeddah Downtown",
+			"distance": "980 km",
+			"duration": "13 hrs",
+			"departureTime": "08:00 AM",
+			"arrivalTime": "09:00 PM",
+			"price": 125,
+			"vehicle": {
+				"name": "Luxury Coach",
+				"type": "bus",
+				"capacity": 40,
+				"amenities": ["WiFi", "AC", "Charging", "Snacks"]
+			},
+			"availableSeats": 12,
+			"totalSeats": 40,
+			"occupiedSeats": [2, 5, 7, 10, 15, 18, 22, 25, 28, 32, 35, 38],
+			"rating": 4.8,
+			"reviews": 234,
+			"image": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&h=300&fit=crop"
+		},
+		{
+			"id": "route_2",
+			"origin": "Riyadh Center",
+			"destination": "Dammam Hub",
+			"distance": "398 km",
+			"duration": "5 hrs",
+			"departureTime": "09:30 AM",
+			"arrivalTime": "02:30 PM",
+			"price": 89,
+			"vehicle": {
+				"name": "VIP Coach",
+				"type": "bus",
+				"capacity": 32,
+				"amenities": ["WiFi", "AC", "Charging"]
+			},
+			"availableSeats": 8,
+			"totalSeats": 32,
+			"occupiedSeats": [1, 3, 6, 9, 12, 15, 18, 20, 25, 28, 30],
+			"rating": 4.6,
+			"reviews": 156,
+			"image": "https://images.unsplash.com/photo-1527786356703-4b100091cd2c?w=400&h=300&fit=crop"
+		},
+		{
+			"id": "route_3",
+			"origin": "Riyadh Center",
+			"destination": "Abha Mountain",
+			"distance": "850 km",
+			"duration": "11 hrs",
+			"departureTime": "07:00 AM",
+			"arrivalTime": "06:00 PM",
+			"price": 145,
+			"vehicle": {
+				"name": "Premium Sleeper",
+				"type": "bus",
+				"capacity": 28,
+				"amenities": ["WiFi", "AC", "Reclining Seats", "Snacks", "Charging"]
+			},
+			"availableSeats": 5,
+			"totalSeats": 28,
+			"occupiedSeats": [1, 4, 7, 10, 13, 16, 19, 22, 25, 27],
+			"rating": 4.9,
+			"reviews": 312,
+			"image": "https://images.unsplash.com/photo-1527786356703-4b100091cd2c?w=400&h=300&fit=crop"
+		},
+		{
+			"id": "route_4",
+			"origin": "Riyadh Center",
+			"destination": "Al Khobar",
+			"distance": "418 km",
+			"duration": "5.5 hrs",
+			"departureTime": "02:00 PM",
+			"arrivalTime": "07:30 PM",
+			"price": 95,
+			"vehicle": {
+				"name": "Standard Coach",
+				"type": "bus",
+				"capacity": 36,
+				"amenities": ["AC", "Charging", "Snacks"]
+			},
+			"availableSeats": 15,
+			"totalSeats": 36,
+			"occupiedSeats": [2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35],
+			"rating": 4.5,
+			"reviews": 89,
+			"image": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&h=300&fit=crop"
+		},
+		{
+			"id": "route_5",
+			"origin": "Riyadh Center",
+			"destination": "Gassim",
+			"distance": "330 km",
+			"duration": "4.5 hrs",
+			"departureTime": "05:00 PM",
+			"arrivalTime": "09:30 PM",
+			"price": 75,
+			"vehicle": {
+				"name": "Quick Coach",
+				"type": "bus",
+				"capacity": 44,
+				"amenities": ["AC", "Charging"]
+			},
+			"availableSeats": 22,
+			"totalSeats": 44,
+			"occupiedSeats": [1, 3, 5, 8, 12, 15, 18, 22, 25, 28, 31, 34, 37, 40, 43],
+			"rating": 4.4,
+			"reviews": 67,
+			"image": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&h=300&fit=crop"
+		}
+	]
+}

@@ -1,0 +1,49 @@
+{
+	"payments": [
+		{
+			"id": "pay_1",
+			"orderId": "order_1",
+			"driverId": "driver_1",
+			"userId": "user_1",
+			"amount": 125.5,
+			"commission": 18.83,
+			"driverEarnings": 106.67,
+			"status": "completed",
+			"method": "card",
+			"date": "2025-12-30T09:22:00Z"
+		},
+		{
+			"id": "pay_2",
+			"orderId": "order_2",
+			"driverId": "driver_4",
+			"userId": "user_2",
+			"amount": 89.75,
+			"commission": 13.46,
+			"driverEarnings": 76.29,
+			"status": "completed",
+			"method": "card",
+			"date": "2025-12-30T10:53:00Z"
+		},
+		{
+			"id": "pay_3",
+			"orderId": "order_3",
+			"driverId": "driver_1",
+			"userId": "user_4",
+			"amount": 52.0,
+			"commission": 7.8,
+			"driverEarnings": 44.2,
+			"status": "pending",
+			"method": "card",
+			"date": "2025-12-31T14:00:00Z"
+		}
+	],
+	"platformStats": {
+		"totalRevenue": 7234.5,
+		"totalCommission": 1085.18,
+		"totalTrips": 324,
+		"activeUsers": 156,
+		"activeDrivers": 42,
+		"commissionPercentage": 15,
+		"monthlyGrowth": 12.5
+	}
+}

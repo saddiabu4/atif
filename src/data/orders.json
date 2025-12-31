@@ -1,0 +1,126 @@
+{
+	"orders": [
+		{
+			"id": "order_1",
+			"userId": "user_1",
+			"driverId": "driver_1",
+			"status": "completed",
+			"pickup": {
+				"address": "Al Noor Tower, Riyadh",
+				"lat": 24.7136,
+				"lng": 46.6753
+			},
+			"destination": {
+				"address": "King Fahd Road, Jeddah",
+				"lat": 21.5433,
+				"lng": 39.1728
+			},
+			"distance": 45.2,
+			"duration": "52 min",
+			"fare": 125.5,
+			"commission": 18.83,
+			"createdAt": "2025-12-30T08:30:00Z",
+			"completedAt": "2025-12-30T09:22:00Z",
+			"rating": 5,
+			"review": "Excellent driver, very professional"
+		},
+		{
+			"id": "order_2",
+			"userId": "user_2",
+			"driverId": "driver_4",
+			"status": "completed",
+			"pickup": {
+				"address": "Olaya Street, Riyadh",
+				"lat": 24.75,
+				"lng": 46.69
+			},
+			"destination": {
+				"address": "KAEC, King Abdullah Economic City",
+				"lat": 22.303,
+				"lng": 39.138
+			},
+			"distance": 32.5,
+			"duration": "38 min",
+			"fare": 89.75,
+			"commission": 13.46,
+			"createdAt": "2025-12-30T10:15:00Z",
+			"completedAt": "2025-12-30T10:53:00Z",
+			"rating": 5,
+			"review": "Great service, clean car"
+		},
+		{
+			"id": "order_3",
+			"userId": "user_4",
+			"driverId": "driver_1",
+			"status": "active",
+			"pickup": {
+				"address": "Riyadh Airport, Terminal 1",
+				"lat": 24.958,
+				"lng": 46.6988
+			},
+			"destination": {
+				"address": "Downtown Riyadh Hotel",
+				"lat": 24.7215,
+				"lng": 46.6757
+			},
+			"distance": 18.0,
+			"duration": "25 min",
+			"fare": 52.0,
+			"commission": 7.8,
+			"createdAt": "2025-12-31T14:00:00Z",
+			"completedAt": null,
+			"rating": null,
+			"review": null
+		},
+		{
+			"id": "order_4",
+			"userId": "user_1",
+			"driverId": "driver_3",
+			"status": "pending",
+			"pickup": {
+				"address": "Mall of Arabia, Riyadh",
+				"lat": 24.77,
+				"lng": 46.66
+			},
+			"destination": {
+				"address": "Princess Nora University",
+				"lat": 24.721,
+				"lng": 46.5936
+			},
+			"distance": 6.5,
+			"duration": "12 min",
+			"fare": 18.5,
+			"commission": 2.78,
+			"createdAt": "2025-12-31T14:45:00Z",
+			"completedAt": null,
+			"rating": null,
+			"review": null
+		},
+		{
+			"id": "order_5",
+			"userId": "user_3",
+			"driverId": "driver_2",
+			"status": "cancelled",
+			"pickup": {
+				"address": "Al Faisaliah Center, Riyadh",
+				"lat": 24.7663,
+				"lng": 46.7108
+			},
+			"destination": {
+				"address": "Edge of The World",
+				"lat": 24.3375,
+				"lng": 46.4161
+			},
+			"distance": 42.0,
+			"duration": "48 min",
+			"fare": 115.0,
+			"commission": 17.25,
+			"createdAt": "2025-12-30T15:20:00Z",
+			"completedAt": null,
+			"cancelledAt": "2025-12-30T15:35:00Z",
+			"rating": null,
+			"review": null,
+			"cancelledBy": "driver"
+		}
+	]
+}

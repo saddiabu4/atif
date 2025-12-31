@@ -1,3 +1,4 @@
+import { useAuth } from "@/lib/authContext"
 import { motion } from "framer-motion"
 import {
 	Award,
@@ -16,6 +17,7 @@ import {
 	Wallet,
 } from "lucide-react"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 const containerVariants = {
 	hidden: { opacity: 0 },
@@ -52,6 +54,17 @@ const currentUser = {
 
 export function UserProfile({ onLogout }) {
 	const [showSettings, setShowSettings] = useState(false)
+	const { logout, user } = useAuth()
+	const navigate = useNavigate()
+
+	const handleLogout = () => {
+		logout()
+		navigate("/auth", { replace: true })
+	}
+
+	const displayName = user?.name || currentUser.name
+	const displayPhone = user?.phone || currentUser.phone
+	const displayRegion = user?.region || currentUser.location
 
 	return (
 		<motion.div
@@ -80,17 +93,15 @@ export function UserProfile({ onLogout }) {
 								/>
 								<div>
 									<h1 className='text-2xl font-bold text-white'>
-										{currentUser.name}
+										{displayName}
 									</h1>
 									<motion.div
 										className='text-xs text-blue-100 mt-1 px-3 py-1 bg-white/20 rounded-full w-fit font-medium'
 										whileHover={{ backgroundColor: "rgba(255, 255, 255, 0.3)" }}
 									>
-										✨ {currentUser.memberStatus}
+										✨ Premium
 									</motion.div>
-									<p className='text-blue-100 text-xs mt-2'>
-										{currentUser.email}
-									</p>
+									<p className='text-blue-100 text-xs mt-2'>{displayPhone}</p>
 								</div>
 							</div>
 							<motion.div
@@ -327,14 +338,14 @@ export function UserProfile({ onLogout }) {
 
 			{/* Logout Button */}
 			<motion.div
-				onClick={onLogout}
+				onClick={handleLogout}
 				className='w-full bg-red-600 text-white font-bold py-4 rounded-xl hover:bg-red-700 transition-colors flex items-center justify-center gap-2 mt-8 cursor-pointer'
 				whileHover={{ scale: 1.02 }}
 				whileTap={{ scale: 0.98 }}
 				variants={itemVariants}
 			>
 				<LogOut className='w-5 h-5' />
-				Logout (Demo)
+				Tizimdan chiqish
 			</motion.div>
 
 			{/* Footer Note */}

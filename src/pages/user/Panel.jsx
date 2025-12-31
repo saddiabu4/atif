@@ -17,17 +17,17 @@ export function UserPanel() {
 	const navItems = [
 		{
 			id: "home",
-			label: "Home",
+			label: "Bosh sahifa",
 			icon: Home,
 		},
 		{
 			id: "bookings",
-			label: "Bookings",
+			label: "Bronlar",
 			icon: Ticket,
 		},
 		{
 			id: "profile",
-			label: "Profile",
+			label: "Profil",
 			icon: User,
 		},
 	]

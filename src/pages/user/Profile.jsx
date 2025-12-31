@@ -39,14 +39,14 @@ const itemVariants = {
 
 const currentUser = {
 	id: "user_1",
-	name: "Ahmed Hassan",
-	email: "ahmed.hassan@email.com",
-	phone: "+966 50 123 4567",
-	avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=ahmed",
-	location: "Riyadh, Saudi Arabia",
+	name: "Abdullayev Qayrat",
+	email: "qayrat@example.com",
+	phone: "+998 90 123 4567",
+	avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=qayrat",
+	location: "Toshkent, O'zbekiston",
 	rating: 4.8,
 	totalTrips: 45,
-	joinDate: "January 2024",
+	joinDate: "Yanvar 2024",
 	memberStatus: "Premium",
 }
 
@@ -113,14 +113,14 @@ export function UserProfile({ onLogout }) {
 							</motion.div>
 							<motion.div className='text-center'>
 								<Truck className='w-5 h-5 text-blue-100 mx-auto mb-1' />
-								<p className='text-blue-100 text-xs font-medium'>Trips</p>
+								<p className='text-blue-100 text-xs font-medium'>Safarlar</p>
 								<p className='text-xl font-bold text-white'>
 									{currentUser.totalTrips}
 								</p>
 							</motion.div>
 							<motion.div className='text-center'>
 								<Award className='w-5 h-5 text-blue-100 mx-auto mb-1' />
-								<p className='text-blue-100 text-xs font-medium'>Member</p>
+								<p className='text-blue-100 text-xs font-medium'>A'zo</p>
 								<p className='text-sm font-bold text-white'>
 									{currentUser.joinDate}
 								</p>
@@ -133,7 +133,7 @@ export function UserProfile({ onLogout }) {
 			<motion.div variants={itemVariants} className='mb-6'>
 				<h2 className='text-xl font-bold text-slate-900 mb-4 flex items-center gap-2'>
 					<Phone className='w-5 h-5 text-blue-600' />
-					Contact Information
+					Aloqa ma'lumotlari
 				</h2>
 				<div className='space-y-3'>
 					<motion.div
@@ -145,7 +145,9 @@ export function UserProfile({ onLogout }) {
 							<Mail className='w-5 h-5 text-blue-600' />
 						</div>
 						<div className='flex-1'>
-							<p className='text-xs text-slate-600 font-medium'>Email</p>
+							<p className='text-xs text-slate-600 font-medium'>
+								Elektron pochta
+							</p>
 							<p className='font-semibold text-slate-900'>
 								{currentUser.email}
 							</p>
@@ -161,7 +163,7 @@ export function UserProfile({ onLogout }) {
 							<Phone className='w-5 h-5 text-emerald-600' />
 						</div>
 						<div className='flex-1'>
-							<p className='text-xs text-slate-600 font-medium'>Phone</p>
+							<p className='text-xs text-slate-600 font-medium'>Telefon</p>
 							<p className='font-semibold text-slate-900'>
 								{currentUser.phone}
 							</p>

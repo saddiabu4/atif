@@ -56,19 +56,19 @@ export function DriverOrders() {
 		await orderAPI.assignDriver(orderId, CURRENT_DRIVER_ID)
 		await orderAPI.updateStatus(orderId, "active")
 		await loadOrders()
-		showToast("Order accepted! You are now on the way.")
+		showToast("Buyurtma qabul qilindi! Siz yo'ldansiz.")
 	}
 
 	const handleRejectOrder = async (orderId) => {
 		// Just remove from view
 		setOrders((prev) => prev.filter((o) => o.id !== orderId))
-		showToast("Order rejected")
+		showToast("Buyurtma rad etildi")
 	}
 
 	const handleCompleteOrder = async (orderId) => {
 		await orderAPI.updateStatus(orderId, "completed")
 		await loadOrders()
-		showToast("Order completed successfully!")
+		showToast("Buyurtma muvaffaqiyatli tugallandi!")
 	}
 
 	const showToast = (message) => {
@@ -77,7 +77,7 @@ export function DriverOrders() {
 		setTimeout(() => setToasts((prev) => prev.filter((t) => t.id !== id)), 3000)
 	}
 
-	if (loading) return <div className='p-8'>Loading...</div>
+	if (loading) return <div className='p-8'>Yuklanmoqda...</div>
 
 	const pendingOrders = orders.filter((o) => o.status === "pending")
 	const activeOrders = orders.filter((o) => o.status === "active")

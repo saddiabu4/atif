@@ -40,7 +40,7 @@ export function RouteDetails({ routeId, onBack, onBooking }) {
 	if (!route) {
 		return (
 			<motion.div className='w-full h-screen flex items-center justify-center'>
-				<p className='text-slate-600'>Route not found</p>
+				<p className='text-slate-600'>Safar topilmadi</p>
 			</motion.div>
 		)
 	}
@@ -93,7 +93,7 @@ export function RouteDetails({ routeId, onBack, onBooking }) {
 					<h1 className='text-2xl font-bold text-slate-900'>
 						{route.destination}
 					</h1>
-					<p className='text-sm text-slate-600'>from {route.origin}</p>
+					<p className='text-sm text-slate-600'>{route.origin} dan</p>
 				</div>
 			</motion.div>
 
@@ -104,23 +104,25 @@ export function RouteDetails({ routeId, onBack, onBooking }) {
 			>
 				<div className='grid grid-cols-3 gap-3 mb-4'>
 					<div>
-						<p className='text-xs text-blue-600 font-medium mb-1'>Departure</p>
+						<p className='text-xs text-blue-600 font-medium mb-1'>Jo'nayish</p>
 						<p className='text-sm font-bold text-slate-900'>
 							{route.departureTime}
 						</p>
 					</div>
 					<div>
-						<p className='text-xs text-blue-600 font-medium mb-1'>Duration</p>
+						<p className='text-xs text-blue-600 font-medium mb-1'>
+							Davomiyligi
+						</p>
 						<p className='text-sm font-bold text-slate-900'>{route.duration}</p>
 					</div>
 					<div>
-						<p className='text-xs text-blue-600 font-medium mb-1'>Distance</p>
+						<p className='text-xs text-blue-600 font-medium mb-1'>Masofasi</p>
 						<p className='text-sm font-bold text-slate-900'>{route.distance}</p>
 					</div>
 				</div>
 				<div className='flex items-center justify-between pt-4 border-t border-blue-200'>
 					<div>
-						<p className='text-xs text-blue-600 font-medium mb-1'>Arrival</p>
+						<p className='text-xs text-blue-600 font-medium mb-1'>Kelish</p>
 						<p className='text-sm font-bold text-slate-900'>
 							{route.arrivalTime}
 						</p>
@@ -136,7 +138,9 @@ export function RouteDetails({ routeId, onBack, onBooking }) {
 
 			{/* Vehicle Info */}
 			<motion.div variants={itemVariants} className='mb-6'>
-				<h2 className='text-lg font-bold text-slate-900 mb-3'>Vehicle Info</h2>
+				<h2 className='text-lg font-bold text-slate-900 mb-3'>
+					Transport ma'lumoti
+				</h2>
 				<div className='bg-white rounded-2xl p-4 border border-slate-200'>
 					<div className='flex items-start justify-between mb-4'>
 						<div>
@@ -148,7 +152,7 @@ export function RouteDetails({ routeId, onBack, onBooking }) {
 							</p>
 						</div>
 						<div className='text-right'>
-							<p className='text-xs text-slate-600 mb-1'>Capacity</p>
+							<p className='text-xs text-slate-600 mb-1'>Sig'imi</p>
 							<p className='text-lg font-bold text-slate-900'>
 								{route.vehicle.capacity}
 							</p>

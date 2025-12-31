@@ -58,21 +58,25 @@ export function MyBookings() {
 			{" "}
 			{/* Header */}
 			<motion.div variants={itemVariants} className='mb-6'>
-				<h1 className='text-3xl font-bold text-slate-900 mb-2'>My Bookings</h1>
-				<p className='text-slate-600 text-sm'>View and manage your trips</p>
+				<h1 className='text-3xl font-bold text-slate-900 mb-2'>
+					Mening bronlar
+				</h1>
+				<p className='text-slate-600 text-sm'>
+					Safarlaringizni ko'ring va boshqaring
+				</p>
 			</motion.div>
 			{/* Filter Tabs */}
 			<motion.div variants={itemVariants} className='flex gap-2 mb-6'>
 				{[
-					{ id: "all", label: "All", count: bookings.length },
+					{ id: "all", label: "Hamma", count: bookings.length },
 					{
 						id: "upcoming",
-						label: "Upcoming",
+						label: "Kelayotgan",
 						count: bookings.filter((b) => b.status === "upcoming").length,
 					},
 					{
 						id: "completed",
-						label: "Completed",
+						label: "Tugallangan",
 						count: bookings.filter((b) => b.status === "completed").length,
 					},
 				].map((tab) => (
@@ -142,7 +146,7 @@ export function MyBookings() {
 													) : (
 														<CheckCircle2 className='w-3 h-3' />
 													)}
-													{isUpcoming ? "Upcoming" : "Completed"}
+													{isUpcoming ? "Kelayotgan" : "Tugallangan"}
 												</motion.div>
 												<h3 className='font-bold text-slate-900'>
 													{route.destination}

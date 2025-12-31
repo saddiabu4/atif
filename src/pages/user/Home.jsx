@@ -57,10 +57,10 @@ export function UserHome({ onRouteSelect }) {
 					/>
 					<div className='relative z-10'>
 						<h1 className='text-3xl font-bold text-white mb-2'>
-							Book Your Ride
+							Safarni Bron Qiling
 						</h1>
 						<p className='text-blue-100 text-sm'>
-							Find and book the perfect journey
+							Eng yaxshi sayohatni topib bron qiling
 						</p>
 					</div>
 				</div>
@@ -80,7 +80,7 @@ export function UserHome({ onRouteSelect }) {
 						{routes.length}
 					</div>
 					<div className='text-xs text-emerald-600 font-medium'>
-						Available Routes
+						Mavjud safarlar
 					</div>
 				</motion.div>
 				<motion.div
@@ -90,7 +90,7 @@ export function UserHome({ onRouteSelect }) {
 				>
 					<div className='text-2xl font-bold text-orange-700 mb-1'>4.7★</div>
 					<div className='text-xs text-orange-600 font-medium'>
-						Average Rating
+						O'rtacha reyting
 					</div>
 				</motion.div>
 			</motion.div>
@@ -99,7 +99,7 @@ export function UserHome({ onRouteSelect }) {
 			<motion.div variants={itemVariants} className='space-y-3'>
 				<h2 className='text-xl font-bold text-slate-900 px-1 mb-4 flex items-center gap-2'>
 					<Zap className='w-5 h-5 text-blue-600' />
-					Popular Routes
+					Mashhur safarlar
 				</h2>
 
 				<AnimatePresence mode='popLayout'>
@@ -157,10 +157,10 @@ export function UserHome({ onRouteSelect }) {
 											whileHover={{ scale: 1.05 }}
 										>
 											<p className='text-3xl font-bold text-blue-600'>
-												{route.price}
+												{route.price.toLocaleString("uz-UZ")}
 											</p>
 											<p className='text-xs text-slate-600 font-medium'>
-												SAR per seat
+												so'm/o'rn
 											</p>
 										</motion.div>
 									</div>
@@ -173,7 +173,7 @@ export function UserHome({ onRouteSelect }) {
 										</span>
 									</div>
 
-									{/* Rating & Seats */}
+									{/* Reyting & O'rinlar */}
 									<motion.div
 										className='flex items-center justify-between pt-3 border-t border-slate-200'
 										initial={{ opacity: 0 }}
@@ -185,7 +185,7 @@ export function UserHome({ onRouteSelect }) {
 												{route.rating}★
 											</span>
 											<span className='text-xs text-slate-600'>
-												({route.reviews} reviews)
+												({route.reviews} izohlar)
 											</span>
 										</div>
 										<motion.div
@@ -216,7 +216,7 @@ export function UserHome({ onRouteSelect }) {
 										whileHover={{ scale: 1.02 }}
 										whileTap={{ scale: 0.98 }}
 									>
-										Book Now
+										Bron qilish
 										<ArrowRight className='w-4 h-4' />
 									</motion.button>
 								</div>
@@ -230,8 +230,10 @@ export function UserHome({ onRouteSelect }) {
 			{routes.length === 0 && (
 				<motion.div variants={itemVariants} className='text-center py-12'>
 					<MapPin className='w-12 h-12 text-slate-300 mx-auto mb-4' />
-					<p className='text-slate-600 font-medium'>No routes available</p>
-					<p className='text-slate-500 text-sm'>Try adjusting your search</p>
+					<p className='text-slate-600 font-medium'>Safarlar mavjud emas</p>
+					<p className='text-slate-500 text-sm'>
+						Izlash shartlarini o'zgartirishga harakat qiling
+					</p>
 				</motion.div>
 			)}
 		</motion.div>

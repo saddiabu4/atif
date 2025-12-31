@@ -28,22 +28,22 @@ const CURRENT_DRIVER_ID = "driver_1"
 const navItems = [
 	{
 		id: "home",
-		label: "Home",
+		label: "Bosh sahifa",
 		icon: ({ className }) => <Power className={className} />,
 	},
 	{
 		id: "orders",
-		label: "Orders",
+		label: "Buyurtmalar",
 		icon: ({ className }) => <Navigation className={className} />,
 	},
 	{
 		id: "earnings",
-		label: "Earnings",
+		label: "Daromad",
 		icon: ({ className }) => <TrendingUp className={className} />,
 	},
 	{
 		id: "profile",
-		label: "Profile",
+		label: "Profil",
 		icon: ({ className }) => <User className={className} />,
 	},
 ]
@@ -81,26 +81,26 @@ function DriverHome({ onShowToast }) {
 	const [isOnline, setIsOnline] = useState(false)
 	const [newRequest, setNewRequest] = useState(null)
 	const [driver] = useState({
-		name: "Saleh Al-Otaibi",
-		avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=saleh",
+		name: "Olimov Salim",
+		avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=salim",
 		totalTrips: 245,
 		rating: 4.9,
-		earnings: { today: 450, thisMonth: 8250 },
+		earnings: { today: 450000, thisMonth: 8250000 },
 	})
 
 	const handleToggleOnline = async (newStatus) => {
 		setIsOnline(newStatus)
 		try {
 			await driverAPI.toggleOnlineStatus(CURRENT_DRIVER_ID, newStatus)
-			onShowToast(newStatus ? "You are now online" : "You are now offline")
+			onShowToast(newStatus ? "Siz onlayn oldingiz" : "Siz oflayn oldingiz")
 			if (newStatus) {
 				setTimeout(() => {
 					setNewRequest({
 						id: "trip_" + Date.now(),
-						passenger: { name: "Noor Al-Rashid", rating: 4.9 },
-						pickup: "Downtown Riyadh",
-						destination: "Airport Terminal 3",
-						estimatedFare: 65,
+						passenger: { name: "Ismatova Dilnoza", rating: 4.9 },
+						pickup: "Toshkent markazi",
+						destination: "Aeroport Terminal 3",
+						estimatedFare: 65000,
 						distance: 25,
 					})
 				}, 2000)
@@ -108,30 +108,33 @@ function DriverHome({ onShowToast }) {
 				setNewRequest(null)
 			}
 		} catch (error) {
-			onShowToast("Failed to update status", "error")
+			onShowToast("Holatni yangilashda xatolik", "error")
 		}
 	}
 
 	const handleAcceptRequest = async () => {
 		if (newRequest) {
 			try {
-				onShowToast(`Trip accepted! Pickup: ${newRequest.pickup}`, "success")
+				onShowToast(
+					`Safar qabul qilindi! Olib ketish: ${newRequest.pickup}`,
+					"success"
+				)
 				setNewRequest(null)
 			} catch (error) {
-				onShowToast("Failed to accept request", "error")
+				onShowToast("So'rovni qabul qilishda xatolik", "error")
 			}
 		}
 	}
 
 	const handleDeclineRequest = () => {
 		setNewRequest(null)
-		onShowToast("Request declined", "info")
+		onShowToast("So'rov rad etildi", "info")
 	}
 
 	return (
 		<MobileContent>
 			<MobileHeader
-				title={`${isOnline ? "Online" : "Offline"}`}
+				title={`${isOnline ? "Onlayn" : "Oflayn"}`}
 				showBack={false}
 			/>
 			<div className='space-y-4'>
@@ -145,7 +148,7 @@ function DriverHome({ onShowToast }) {
 										⭐ {driver.rating}
 									</span>
 									<span className='text-sm text-slate-600'>
-										• {driver.totalTrips} trips
+										• {driver.totalTrips} safar
 									</span>
 								</div>
 							</div>
@@ -157,7 +160,7 @@ function DriverHome({ onShowToast }) {
 										: "bg-slate-200 text-slate-700 hover:bg-slate-300"
 								}`}
 							>
-								{isOnline ? "Online" : "Go Online"}
+								{isOnline ? "Onlayn" : "Onlayn bo'lish"}
 							</button>
 						</div>
 					</CardContent>
@@ -169,10 +172,10 @@ function DriverHome({ onShowToast }) {
 							<div className='space-y-3'>
 								<div className='flex items-center justify-between'>
 									<span className='font-semibold text-slate-900'>
-										New Trip Request!
+										Yangi safar so'rovi!
 									</span>
 									<span className='text-2xl font-bold text-green-600'>
-										SAR {newRequest.estimatedFare}
+										{newRequest.estimatedFare.toLocaleString("uz-UZ")} so'm
 									</span>
 								</div>
 								<div className='space-y-2 text-sm'>
@@ -197,14 +200,14 @@ function DriverHome({ onShowToast }) {
 										onClick={handleAcceptRequest}
 										className='flex-1 bg-green-500 hover:bg-green-600 text-white'
 									>
-										Accept
+										Qabul qilish
 									</Button>
 									<Button
 										onClick={handleDeclineRequest}
 										variant='outline'
 										className='flex-1'
 									>
-										Decline
+										Rad etish
 									</Button>
 								</div>
 							</div>
@@ -218,15 +221,15 @@ function DriverHome({ onShowToast }) {
 							<div className='grid grid-cols-2 gap-4'>
 								<div>
 									<p className='text-2xl font-bold text-purple-600'>
-										SAR {driver.earnings.today}
+										{driver.earnings.today.toLocaleString("uz-UZ")} so'm
 									</p>
-									<p className='text-sm text-slate-600'>Today</p>
+									<p className='text-sm text-slate-600'>Bugun</p>
 								</div>
 								<div>
 									<p className='text-2xl font-bold text-blue-600'>
-										SAR {driver.earnings.thisMonth}
+										{driver.earnings.thisMonth.toLocaleString("uz-UZ")} so'm
 									</p>
-									<p className='text-sm text-slate-600'>This Month</p>
+									<p className='text-sm text-slate-600'>Bu oy</p>
 								</div>
 							</div>
 						</CardContent>
@@ -240,10 +243,11 @@ function DriverHome({ onShowToast }) {
 								<AlertCircle className='w-5 h-5 text-amber-600 shrink-0 mt-0.5' />
 								<div>
 									<h3 className='font-semibold text-amber-900'>
-										You're offline
+										Siz oflayn oldingiz
 									</h3>
 									<p className='text-sm text-amber-800 mt-1'>
-										Go online to receive trip requests and start earning!
+										Safar so'rovlarini qabul qilish va daromad olish uchun
+										onlayn bo'ling!
 									</p>
 								</div>
 							</div>

@@ -84,9 +84,9 @@ export function BookingSuccess({ booking, onDone }) {
 			{/* Success Message */}
 			<motion.div variants={itemVariants} className='text-center mb-8'>
 				<h1 className='text-3xl font-bold text-slate-900 mb-2'>
-					Booking Confirmed!
+					Bron tasdiqlandi!
 				</h1>
-				<p className='text-slate-600'>Your journey is all set</p>
+				<p className='text-slate-600'>Sizning safar tayyor</p>
 			</motion.div>
 
 			{/* Booking Reference */}
@@ -94,9 +94,7 @@ export function BookingSuccess({ booking, onDone }) {
 				variants={itemVariants}
 				className='w-full bg-linear-to-br from-blue-50 to-blue-100 rounded-2xl p-5 mb-6 border border-blue-200'
 			>
-				<p className='text-xs text-blue-600 font-medium mb-2'>
-					Booking Reference
-				</p>
+				<p className='text-xs text-blue-600 font-medium mb-2'>Bron shakli</p>
 				<div className='flex items-center justify-between'>
 					<div>
 						<p className='text-2xl font-bold text-slate-900 font-mono'>

@@ -6,23 +6,23 @@
 			"driverId": "driver_1",
 			"status": "completed",
 			"pickup": {
-				"address": "Al Noor Tower, Riyadh",
+				"address": "Toshkent Shahri Markazi",
 				"lat": 24.7136,
 				"lng": 46.6753
 			},
 			"destination": {
-				"address": "King Fahd Road, Jeddah",
+				"address": "Samarqand Shaxri Markazi",
 				"lat": 21.5433,
 				"lng": 39.1728
 			},
 			"distance": 45.2,
 			"duration": "52 min",
-			"fare": 125.5,
-			"commission": 18.83,
+			"fare": 125500,
+			"commission": 18830,
 			"createdAt": "2025-12-30T08:30:00Z",
 			"completedAt": "2025-12-30T09:22:00Z",
 			"rating": 5,
-			"review": "Excellent driver, very professional"
+			"review": "Ajoyib haydovchi, juda professional"
 		},
 		{
 			"id": "order_2",
@@ -30,23 +30,23 @@
 			"driverId": "driver_4",
 			"status": "completed",
 			"pickup": {
-				"address": "Olaya Street, Riyadh",
+				"address": "Chilonzor Tumani, Toshkent",
 				"lat": 24.75,
 				"lng": 46.69
 			},
 			"destination": {
-				"address": "KAEC, King Abdullah Economic City",
+				"address": "Universitet Tumani, Toshkent",
 				"lat": 22.303,
 				"lng": 39.138
 			},
 			"distance": 32.5,
 			"duration": "38 min",
-			"fare": 89.75,
-			"commission": 13.46,
+			"fare": 89750,
+			"commission": 13460,
 			"createdAt": "2025-12-30T10:15:00Z",
 			"completedAt": "2025-12-30T10:53:00Z",
 			"rating": 5,
-			"review": "Great service, clean car"
+			"review": "Ajoyib xizmat, toza avtomobil"
 		},
 		{
 			"id": "order_3",
@@ -54,19 +54,19 @@
 			"driverId": "driver_1",
 			"status": "active",
 			"pickup": {
-				"address": "Riyadh Airport, Terminal 1",
+				"address": "Toshkent Aeroporti Terminal 1",
 				"lat": 24.958,
 				"lng": 46.6988
 			},
 			"destination": {
-				"address": "Downtown Riyadh Hotel",
+				"address": "Toshkent Shahri Markazi Mehmonxona",
 				"lat": 24.7215,
 				"lng": 46.6757
 			},
 			"distance": 18.0,
 			"duration": "25 min",
-			"fare": 52.0,
-			"commission": 7.8,
+			"fare": 52000,
+			"commission": 7800,
 			"createdAt": "2025-12-31T14:00:00Z",
 			"completedAt": null,
 			"rating": null,
@@ -78,19 +78,19 @@
 			"driverId": "driver_3",
 			"status": "pending",
 			"pickup": {
-				"address": "Mall of Arabia, Riyadh",
+				"address": "Toshkent Savdo Markazi",
 				"lat": 24.77,
 				"lng": 46.66
 			},
 			"destination": {
-				"address": "Princess Nora University",
+				"address": "Farg'ona Viloyati",
 				"lat": 24.721,
 				"lng": 46.5936
 			},
 			"distance": 6.5,
 			"duration": "12 min",
-			"fare": 18.5,
-			"commission": 2.78,
+			"fare": 18500,
+			"commission": 2780,
 			"createdAt": "2025-12-31T14:45:00Z",
 			"completedAt": null,
 			"rating": null,
@@ -102,19 +102,19 @@
 			"driverId": "driver_2",
 			"status": "cancelled",
 			"pickup": {
-				"address": "Al Faisaliah Center, Riyadh",
+				"address": "Toshkent Turizm Markazi",
 				"lat": 24.7663,
 				"lng": 46.7108
 			},
 			"destination": {
-				"address": "Edge of The World",
+				"address": "Namangan Shahar",
 				"lat": 24.3375,
 				"lng": 46.4161
 			},
 			"distance": 42.0,
 			"duration": "48 min",
-			"fare": 115.0,
-			"commission": 17.25,
+			"fare": 115000,
+			"commission": 17250,
 			"createdAt": "2025-12-30T15:20:00Z",
 			"completedAt": null,
 			"cancelledAt": "2025-12-30T15:35:00Z",

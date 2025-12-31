@@ -30,7 +30,7 @@ export function DriverDashboard() {
 		await driverAPI.toggleOnlineStatus(CURRENT_DRIVER_ID, newStatus)
 		setIsOnline(newStatus)
 		await loadDriver()
-		showToast(newStatus ? "You are now online" : "You are now offline")
+		showToast(newStatus ? "Siz onlayn oldingiz" : "Siz oflayn oldingiz")
 	}
 
 	const showToast = (message) => {
@@ -39,17 +39,17 @@ export function DriverDashboard() {
 		setTimeout(() => setToasts((prev) => prev.filter((t) => t.id !== id)), 3000)
 	}
 
-	if (loading || !driver) return <div className='p-8'>Loading...</div>
+	if (loading || !driver) return <div className='p-8'>Yuklanmoqda...</div>
 
 	return (
 		<>
 			<Header
-				title='Driver Dashboard'
-				subtitle={`Welcome back, ${driver.name}`}
+				title='Haydovchi Dashboard'
+				subtitle={`Xush kelibsiz, ${driver.name}`}
 			>
 				<div className='flex items-center gap-4'>
 					<div className='text-right'>
-						<p className='text-sm text-gray-600'>Status</p>
+						<p className='text-sm text-gray-600'>Holati</p>
 						<p className='text-lg font-bold'>{driver.status.toUpperCase()}</p>
 					</div>
 					<Toggle
@@ -62,39 +62,38 @@ export function DriverDashboard() {
 
 			<Container>
 				<Grid cols={3} className='mb-8 sm:grid-cols-1 md:grid-cols-2'>
+					{" "}
 					<Card>
 						<CardContent className='pt-6'>
 							<div className='flex items-center justify-between'>
 								<div>
-									<p className='text-sm text-gray-600'>Today's Earnings</p>
+									<p className='text-sm text-gray-600'>Bugungi daromad</p>
 									<p className='text-3xl font-bold mt-2'>
-										SAR {driver.earnings.today}
+										{driver.earnings.today.toLocaleString("uz-UZ")} so'm
 									</p>
 								</div>
 								<DollarSign className='w-12 h-12 text-green-500 opacity-20' />
 							</div>
 						</CardContent>
 					</Card>
-
 					<Card>
 						<CardContent className='pt-6'>
 							<div className='flex items-center justify-between'>
 								<div>
-									<p className='text-sm text-gray-600'>This Month</p>
+									<p className='text-sm text-gray-600'>Bu oy</p>
 									<p className='text-3xl font-bold mt-2'>
-										SAR {driver.earnings.thisMonth}
+										{driver.earnings.thisMonth.toLocaleString("uz-UZ")} so'm
 									</p>
 								</div>
 								<DollarSign className='w-12 h-12 text-blue-500 opacity-20' />
 							</div>
 						</CardContent>
 					</Card>
-
 					<Card>
 						<CardContent className='pt-6'>
 							<div className='flex items-center justify-between'>
 								<div>
-									<p className='text-sm text-gray-600'>Total Trips</p>
+									<p className='text-sm text-gray-600'>Jami safarlar</p>
 									<p className='text-3xl font-bold mt-2'>{driver.totalTrips}</p>
 								</div>
 								<Navigation className='w-12 h-12 text-purple-500 opacity-20' />
@@ -104,9 +103,10 @@ export function DriverDashboard() {
 				</Grid>
 
 				<Grid cols={2} className='lg:grid-cols-1'>
+					{" "}
 					<Card>
 						<CardHeader>
-							<CardTitle>Rating & Reviews</CardTitle>
+							<CardTitle>Reyting va izohlar</CardTitle>
 						</CardHeader>
 						<CardContent>
 							<div className='space-y-4'>
@@ -120,33 +120,31 @@ export function DriverDashboard() {
 										</div>
 									</div>
 									<p className='text-sm text-gray-600'>
-										Based on {driver.reviewsCount} trips
+										{driver.reviewsCount} safar asosida
 									</p>
 								</div>
 
 								<div className='pt-4 border-t'>
-									<h4 className='font-semibold mb-3'>Recent Reviews</h4>
+									<h4 className='font-semibold mb-3'>Yaqinda izohlar</h4>
 									<div className='space-y-2 max-h-32 overflow-y-auto'>
 										<div>
 											<div className='flex items-center gap-1'>
 												<span className='text-yellow-500'>★★★★★</span>
 												<span className='text-xs text-gray-600'>
-													Ahmed Hassan
+													Abdullayev Qayrat
 												</span>
 											</div>
-											<p className='text-sm text-gray-600'>
-												"Excellent service!"
-											</p>
+											<p className='text-sm text-gray-600'>"Ajoyib xizmat!"</p>
 										</div>
 										<div>
 											<div className='flex items-center gap-1'>
 												<span className='text-yellow-500'>★★★★★</span>
 												<span className='text-xs text-gray-600'>
-													Noor AlAyed
+													Anvarov Nodira
 												</span>
 											</div>
 											<p className='text-sm text-gray-600'>
-												"Very professional driver"
+												"Juda professional haydovchi"
 											</p>
 										</div>
 									</div>
@@ -154,7 +152,6 @@ export function DriverDashboard() {
 							</div>
 						</CardContent>
 					</Card>
-
 					<Card>
 						<CardHeader>
 							<CardTitle>Verification Status</CardTitle>

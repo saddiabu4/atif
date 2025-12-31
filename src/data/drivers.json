@@ -2,10 +2,10 @@
 	"drivers": [
 		{
 			"id": "driver_1",
-			"name": "Saleh Al-Otaibi",
-			"email": "saleh@example.com",
-			"phone": "+966 50 111 2222",
-			"avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=saleh",
+			"name": "Olimov Salim",
+			"email": "salim@example.com",
+			"phone": "+998 90 111 2222",
+			"avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=salim",
 			"status": "online",
 			"verificationStatus": "verified",
 			"joinedDate": "2024-01-10",
@@ -14,8 +14,8 @@
 			"vehicle": {
 				"type": "sedan",
 				"model": "Toyota Camry 2023",
-				"licensePlate": "KSA 1234",
-				"color": "Silver"
+				"licensePlate": "UZ 1234",
+				"color": "Kumush"
 			},
 			"documents": {
 				"license": "verified",
@@ -23,18 +23,18 @@
 				"registration": "verified"
 			},
 			"earnings": {
-				"today": 450,
-				"thisMonth": 8250,
-				"total": 18500
+				"today": 450000,
+				"thisMonth": 8250000,
+				"total": 18500000
 			},
 			"averageRating": 4.9,
 			"reviewsCount": 187
 		},
 		{
 			"id": "driver_2",
-			"name": "Khalid Hassan",
+			"name": "Akhmedov Khalid",
 			"email": "khalid@example.com",
-			"phone": "+966 50 222 3333",
+			"phone": "+998 90 222 3333",
 			"avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=khalid",
 			"status": "offline",
 			"verificationStatus": "verified",
@@ -44,8 +44,8 @@
 			"vehicle": {
 				"type": "suv",
 				"model": "Hyundai Santa Fe 2023",
-				"licensePlate": "KSA 5678",
-				"color": "Black"
+				"licensePlate": "UZ 5678",
+				"color": "Qora"
 			},
 			"documents": {
 				"license": "verified",
@@ -54,18 +54,18 @@
 			},
 			"earnings": {
 				"today": 0,
-				"thisMonth": 7800,
-				"total": 15300
+				"thisMonth": 7800000,
+				"total": 15300000
 			},
 			"averageRating": 4.7,
 			"reviewsCount": 156
 		},
 		{
 			"id": "driver_3",
-			"name": "Omar Al-Shehri",
-			"email": "omar@example.com",
-			"phone": "+966 50 333 4444",
-			"avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=omar",
+			"name": "Usmonov Umar",
+			"email": "umar@example.com",
+			"phone": "+998 90 333 4444",
+			"avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=umar",
 			"status": "online",
 			"verificationStatus": "pending",
 			"joinedDate": "2024-10-20",
@@ -74,8 +74,8 @@
 			"vehicle": {
 				"type": "sedan",
 				"model": "Nissan Altima 2022",
-				"licensePlate": "KSA 9012",
-				"color": "White"
+				"licensePlate": "UZ 9012",
+				"color": "Oq"
 			},
 			"documents": {
 				"license": "pending",
@@ -83,19 +83,19 @@
 				"registration": "pending"
 			},
 			"earnings": {
-				"today": 280,
-				"thisMonth": 2100,
-				"total": 2100
+				"today": 280000,
+				"thisMonth": 2100000,
+				"total": 2100000
 			},
 			"averageRating": 4.5,
 			"reviewsCount": 18
 		},
 		{
 			"id": "driver_4",
-			"name": "Faisal Al-Dossary",
-			"email": "faisal@example.com",
-			"phone": "+966 50 444 5555",
-			"avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=faisal",
+			"name": "Qosimov Faysol",
+			"email": "faysol@example.com",
+			"phone": "+998 90 444 5555",
+			"avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=faysol",
 			"status": "offline",
 			"verificationStatus": "verified",
 			"joinedDate": "2024-03-12",
@@ -104,8 +104,8 @@
 			"vehicle": {
 				"type": "suv",
 				"model": "Chevrolet Tahoe 2023",
-				"licensePlate": "KSA 3456",
-				"color": "Dark Gray"
+				"licensePlate": "UZ 3456",
+				"color": "To'q Kulrang"
 			},
 			"documents": {
 				"license": "verified",
@@ -114,8 +114,8 @@
 			},
 			"earnings": {
 				"today": 0,
-				"thisMonth": 9100,
-				"total": 22400
+				"thisMonth": 9100000,
+				"total": 22400000
 			},
 			"averageRating": 4.8,
 			"reviewsCount": 267

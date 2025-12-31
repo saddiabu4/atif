@@ -5,28 +5,28 @@
 			"routeId": "route_1",
 			"userId": "user_1",
 			"seat": 12,
-			"passengerName": "Ahmed Hassan",
-			"phone": "+966 50 123 4567",
+			"passengerName": "Abdullayev Qayrat",
+			"phone": "+998 90 123 4567",
 			"status": "upcoming",
 			"bookingDate": "2025-12-30T10:30:00Z",
 			"departureDate": "2026-01-05T08:00:00Z",
-			"price": 125,
+			"price": 120000,
 			"paymentStatus": "completed",
-			"bookingRef": "SHO-2506-12AB"
+			"bookingRef": "ATF-2506-12AB"
 		},
 		{
 			"id": "booking_2",
 			"routeId": "route_2",
 			"userId": "user_1",
 			"seat": 8,
-			"passengerName": "Ahmed Hassan",
-			"phone": "+966 50 123 4567",
+			"passengerName": "Abdullayev Qayrat",
+			"phone": "+998 90 123 4567",
 			"status": "completed",
 			"bookingDate": "2025-12-15T14:15:00Z",
 			"departureDate": "2025-12-20T09:30:00Z",
-			"price": 89,
+			"price": 85000,
 			"paymentStatus": "completed",
-			"bookingRef": "SHO-2485-8XY"
+			"bookingRef": "ATF-2485-8XY"
 		}
 	]
 }
